@@ -79,17 +79,15 @@ src/
   assets/      site images (committed)
   styles/      design tokens + base CSS
 public/        favicon + fonts (fonts gitignored — see above)
-legacy-export/  local copy of the original site's captured export data
-               (the committed metadata lives on the `legacy` branch; the
-               90MB of original-resolution assets exist only locally — archive
-               them externally!)
+legacy branch  complete archive of the original site's captured export
 fonts/         licensed Coolvetica files (gitignored)
 ```
 
 ## Notes
 
-- `legacy-export/assets/` (local originals) is the only copy of the
-  full-resolution export assets — back it up (cloud drive / external disk).
+- The original site's export data (metadata + all unique assets) is
+  archived on the `legacy` branch. The fifty-four original asset files
+  the site uses are byte-identical to `src/assets/` on main.
 - The old `/content-draft/` URL is intentionally not built; its content is
   preserved on the `legacy` branch (page `content-draft`).
 - Custom cursor from the original was dropped by decision; scroll-reveal
