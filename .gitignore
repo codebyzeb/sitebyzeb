@@ -11,8 +11,6 @@ node_modules/
 /fonts/
 /public/fonts/*.woff2
 
-# legacy export originals (93MB — kept locally only, archive externally; metadata lives on the legacy branch)
-/legacy-export/
 
 # misc
 .DS_Store
