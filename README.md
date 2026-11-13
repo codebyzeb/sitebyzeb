@@ -1,8 +1,7 @@
 # sitebyzeb.com
 
 Zeb Goriely's personal site — self-coded with [Astro](https://astro.build),
-rebuilt from the original site project. Served by GitHub Pages at
-[sitebyzeb.com](https://sitebyzeb.com).
+served by GitHub Pages at [sitebyzeb.com](https://sitebyzeb.com).
 
 ## Editing content
 
@@ -66,7 +65,7 @@ One-time DNS (Squarespace registrar):
   `185.199.110.153`, `185.199.111.153`
 - `www.sitebyzeb.com` CNAME → `codebyzeb.github.io`
 
-Keep the previous-site site published until you've verified the new site at the
+Keep the previous host published until you've verified the new site at the
 domain, then unpublish.
 
 ## Repo layout
@@ -80,17 +79,18 @@ src/
   assets/      site images (committed)
   styles/      design tokens + base CSS
 public/        favicon + fonts (fonts gitignored — see above)
-legacy-export/   captured source-of-truth from the old site
-  page-widgets.json, snippets/, screenshots/, content-sheets/  (committed)
-  assets/      90MB of original-resolution exports (gitignored — archive externally!)
+legacy-export/  local copy of the original site's captured export data
+               (the committed metadata lives on the `legacy` branch; the
+               90MB of original-resolution assets exist only locally — archive
+               them externally!)
 fonts/         licensed Coolvetica files (gitignored)
 ```
 
 ## Notes
 
-- `legacy-export/assets/` (originals, gitignored) is the only copy of the
-  full-resolution previous-site exports — back it up (cloud drive / external disk).
+- `legacy-export/assets/` (local originals) is the only copy of the
+  full-resolution export assets — back it up (cloud drive / external disk).
 - The old `/content-draft/` URL is intentionally not built; its content is
-  preserved in `legacy-export/` (page `content-draft`).
+  preserved on the `legacy` branch (page `content-draft`).
 - Custom cursor from the original was dropped by decision; scroll-reveal
   animations kept (respecting `prefers-reduced-motion`).

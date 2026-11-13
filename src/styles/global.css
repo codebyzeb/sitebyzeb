@@ -1,6 +1,6 @@
 /*
  * sitebyzeb.com — design tokens & base styles
- * Ported from the original site project (see legacy-export/).
+ * Design tokens ported from the original site's design.
  */
 
 @font-face {
@@ -12,7 +12,7 @@
 }
 
 :root {
-  /* palette (from the previous site project) */
+  /* palette */
   --bg: #fffcf6;
   --ink: #222222;
   --ink-soft: rgba(34, 34, 34, 0.64);
