@@ -49,7 +49,17 @@ const poster =
     ) : (
       <img class="embed-poster" src={poster} alt="" loading="lazy" />
     )}
-    <span class="play" aria-hidden="true">▶</span>
+    <span class="play" aria-hidden="true">
+      <svg viewBox="0 0 100 100">
+        <path
+          d="M36 27 L73 50 L36 73 Z"
+          fill="#fff"
+          stroke="#fff"
+          stroke-width="9"
+          stroke-linejoin="round"
+        />
+      </svg>
+    </span>
   </div>
 )}
 
@@ -119,19 +129,14 @@ const poster =
     position: absolute;
     top: 50%;
     left: 50%;
-    translate: -50% -50%;
-    display: grid;
-    place-items: center;
-    width: 3em;
-    height: 3em;
-    border-radius: 50%;
-    background: #fff;
-    color: #111;
-    font-size: 0.9em;
-    padding-left: 0.12em;
-    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35);
+    /* slight right shift — optical centring for a triangle */
+    translate: calc(-50% + 3%) -50%;
+    width: clamp(40px, 9%, 64px);
+    height: clamp(40px, 9%, 64px);
+    filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.4));
     transition: transform 0.15s ease;
   }
+  .play svg { width: 100%; height: 100%; display: block; }
   .embed--tiktok {
     background: transparent;
     box-shadow: none;
