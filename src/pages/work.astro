@@ -103,12 +103,27 @@ const comingSoon = [
   .tile:hover .tile-img,
   .tile:focus-visible .tile-img { opacity: 1; }
   .tile:hover .tile-label { color: #fff; text-shadow: 0 1px 8px rgba(0, 0, 0, 0.4); }
-  /* on touch there is no hover: show the image always */
+  /* on touch there is no hover: the photo shows while the tile is near the
+     middle of the screen and fades back to yellow as it scrolls away
+     (the original site's behaviour — driven by the page script below) */
   @media (hover: none) {
-    .tile-img { opacity: 1; }
-    .tile-label { color: #fff; text-shadow: 0 1px 8px rgba(0, 0, 0, 0.4); }
+    .tile-img {
+      opacity: var(--img-o, 1);
+      transition: opacity 0.25s ease;
+    }
+    .tile.tile--photo .tile-label {
+      color: #fff;
+      text-shadow: 0 1px 8px rgba(0, 0, 0, 0.4);
+    }
   }
   .tile--soon { cursor: default; }
+
+  /* mobile: tiles are single-column and full-width, so the labels
+     can be much bigger — closer to the original's proportion */
+  @media (max-width: 640px) {
+    .tile-label { font-size: clamp(2rem, 9vw, 2.6rem); }
+    .tile-label small { font-size: 0.4em; }
+  }
 
   /* a small red circle that spins around the text while the tile is
      hovered, and disappears again when it isn't. The elliptical path is
@@ -162,3 +177,40 @@ const comingSoon = [
     100% { translate: 100% 50%; }
   }
 </style>
+
+<script>
+  // Scroll-driven tile reveal on touch devices (no hover there): a tile
+  // shows its photo while it sits near the middle of the screen and
+  // fades back to the yellow box as it scrolls up or down — the original
+  // site's behaviour. Desktop keeps the hover reveal.
+  const tiles = Array.from(document.querySelectorAll<HTMLElement>('.tile'));
+  const touch = matchMedia('(hover: none)').matches;
+  const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  if (touch && tiles.length && !reduced) {
+    const update = () => {
+      const mid = innerHeight / 2;
+      for (const t of tiles) {
+        const r = t.getBoundingClientRect();
+        const d = Math.abs(r.top + r.height / 2 - mid) / (innerHeight / 2);
+        // full photo within the middle band of the screen, fully yellow
+        // once the tile's centre passes ~87% of the half-viewport
+        const o = Math.min(1, Math.max(0, 1 - Math.max(0, d - 0.2) * 1.5));
+        t.style.setProperty('--img-o', o.toFixed(3));
+        t.classList.toggle('tile--photo', o > 0.45);
+      }
+    };
+    let ticking = false;
+    const onScroll = () => {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(() => {
+        ticking = false;
+        update();
+      });
+    };
+    addEventListener('scroll', onScroll, { passive: true });
+    addEventListener('resize', onScroll);
+    update();
+  }
+</script>
