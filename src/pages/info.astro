@@ -23,15 +23,19 @@ function withLinks(p: string): string {
   return out;
 }
 
-// "find me" game: draggable sticker chips arranged around the portrait like
-// a pinwheel — individually readable, but together they fully cover the photo
-// (and the caption beneath it) until dragged away.
+// "find me" game, recreated from the original ReadyMag layout:
+// the yellow instagram circle is the central anchor (topmost), with the
+// red pill above, blue square lower-left, brown square right and green
+// pill below — their inner edges tucked under the circle. The portrait and
+// "you found me!" caption sit directly beneath the circle.
+// Positions/sizes are percentages/cqw of the game container (420px wide,
+// 705:606 aspect — same proportions as the original).
 const chipPositions: Record<string, { x: string; y: string; r: string }> = {
-  TikTok: { x: '42.5%', y: '12.5%', r: '6deg' },
-  Instagram: { x: '22%', y: '31%', r: '4deg' },
-  email: { x: '49%', y: '41.7%', r: '-4deg' },
-  YouTube: { x: '22.8%', y: '64.6%', r: '-3deg' },
-  LinkedIn: { x: '39.7%', y: '68.8%', r: '-5deg' },
+  YouTube: { x: '34.8%', y: '29.5%', r: '-4deg' },
+  email: { x: '17.2%', y: '43%', r: '-6deg' },
+  Instagram: { x: '36.7%', y: '42.5%', r: '0deg' },
+  TikTok: { x: '64.5%', y: '46%', r: '2deg' },
+  LinkedIn: { x: '34%', y: '70.5%', r: '2deg' },
 };
 
 const chips = [
@@ -64,15 +68,15 @@ const chips = [
   </section>
 
   <section class="find-me reveal">
-    <h2 class="find-heading">find me:</h2>
     <div class="find-game">
+      <h2 class="find-heading">find me:</h2>
       <figure class="find-photo">
         <Image
           class="portrait"
           src={portrait}
           alt="Casual portrait of Zeb Goriely"
           widths={[160, 320]}
-          sizes="104px"
+          sizes="19cqw"
           loading="lazy"
         />
       </figure>
@@ -126,28 +130,40 @@ const chips = [
     text-underline-offset: 0.3em;
   }
 
-  /* ---------- "find me" game ---------- */
+  /* ---------- "find me" game (original ReadyMag layout) ---------- */
 
   .find-me { text-align: center; }
-  .find-heading { font-size: var(--size-h3); font-weight: 400; }
 
   .find-game {
     position: relative;
-    width: min(360px, 100%);
-    height: 240px;
+    width: min(420px, 100%);
+    aspect-ratio: 705 / 606; /* same proportions as the original cluster */
     margin: 0 auto;
+    container-type: inline-size; /* children size themselves in cqw */
     touch-action: pan-y;
   }
+  .find-heading {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 18.5%;
+    font-size: 6cqw;
+    font-weight: 400;
+    text-align: center;
+    margin: 0;
+  }
+  /* the portrait + caption live directly under the yellow circle —
+     dragging it away is what reveals them */
   .find-photo {
     position: absolute;
-    left: 50%;
-    top: 50%;
+    left: 51.7%; /* centre of the instagram circle */
+    top: 60%;
     translate: -50% -50%;
     margin: 0;
   }
   .find-photo .portrait {
-    width: 104px;
-    height: 104px;
+    width: 19cqw;
+    height: 19cqw;
     border-radius: 50%;
     object-fit: cover;
     border: 2px solid var(--ink);
@@ -157,8 +173,9 @@ const chips = [
     position: absolute;
     left: 0;
     right: 0;
-    top: 176px;
+    top: 72.5%;
     margin: 0;
+    font-size: 3.6cqw;
     white-space: nowrap;
   }
 
@@ -170,55 +187,58 @@ const chips = [
     display: inline-grid;
     place-items: center;
     border: 2px solid var(--ink);
-    font-size: var(--size-small);
+    font-family: var(--font-caption); /* Georgia, like the original buttons */
+    font-size: 4.4cqw;
     text-decoration: none;
     cursor: grab;
     touch-action: none;
     user-select: none;
     -webkit-user-select: none;
-    z-index: 2;
+    z-index: 3;
     transition: rotate 0.25s ease, scale 0.25s ease;
   }
-  .chip:hover { scale: 1.06; }
+  .chip:hover { scale: 1.05; }
   .chip.is-dragging {
     cursor: grabbing;
-    scale: 1.1;
+    scale: 1.08;
     rotate: 0deg;
     z-index: 10;
     transition: none;
   }
 
-  .chip--email {
-    width: 78px;
-    height: 78px;
-    border-radius: 14px;
-    background: var(--blue);
-    color: #fff;
-  }
-  .chip--instagram {
-    width: 98px;
-    height: 98px;
-    border-radius: 50%;
-    background: var(--yellow);
-    color: var(--ink);
-  }
+  /* shapes + sizes from the original cluster (cqw = % of game width) */
   .chip--youtube {
-    width: 116px;
-    height: 48px;
+    width: 33.6cqw;
+    height: 14.2cqw;
     border-radius: 999px;
     background: var(--red);
     color: #fff;
   }
+  .chip--email {
+    width: 20.6cqw;
+    height: 20.6cqw;
+    border-radius: 2px;
+    background: var(--blue);
+    color: #fff;
+  }
+  .chip--instagram {
+    width: 30cqw;
+    height: 30cqw;
+    border-radius: 50%;
+    background: var(--yellow);
+    color: var(--ink);
+    z-index: 6; /* the circle anchors the cluster and covers the photo */
+  }
   .chip--tiktok {
-    width: 66px;
-    height: 66px;
-    border-radius: 14px;
+    width: 18.4cqw;
+    height: 18.4cqw;
+    border-radius: 1.7cqw;
     background: var(--brown);
     color: #fff;
   }
   .chip--linkedin {
-    width: 116px;
-    height: 48px;
+    width: 35cqw;
+    height: 16.9cqw;
     border-radius: 999px;
     background: var(--green);
     color: #fff;
