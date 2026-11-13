@@ -22,6 +22,21 @@ function withLinks(p: string): string {
   }
   return out;
 }
+
+// "find me" game: draggable sticker chips scattered over the portrait —
+// move them aside to reveal the photo underneath.
+const chipPositions: Record<string, { x: string; y: string; r: string }> = {
+  email: { x: '36%', y: '24%', r: '-6deg' },
+  YouTube: { x: '52%', y: '14%', r: '8deg' },
+  Instagram: { x: '44%', y: '40%', r: '5deg' },
+  TikTok: { x: '18%', y: '48%', r: '-3deg' },
+  LinkedIn: { x: '26%', y: '66%', r: '-5deg' },
+};
+
+const chips = [
+  { label: 'email', href: `mailto:${CONTACT_EMAIL}` },
+  ...SOCIALS.map((s) => ({ label: s.label, href: s.href })),
+].map((c) => ({ ...c, pos: chipPositions[c.label] }));
 ---
 
 <BaseLayout title="Info">
@@ -48,32 +63,32 @@ function withLinks(p: string): string {
   </section>
 
   <section class="find-me reveal">
-    <p class="find-heading">find me:</p>
-    <div class="socials">
-      <a class="social email" href={`mailto:${CONTACT_EMAIL}`}>email</a>
-      {SOCIALS.map((s) => (
+    <h2 class="find-heading">find me:</h2>
+    <p class="find-hint caption">drag the stickers around</p>
+    <div class="find-game">
+      <figure class="find-photo">
+        <Image
+          class="portrait"
+          src={portrait}
+          alt="Casual portrait of Zeb Goriely"
+          widths={[160, 320]}
+          sizes="130px"
+          loading="lazy"
+        />
+        <figcaption class="caption">you found me!</figcaption>
+      </figure>
+      {chips.map((c) => (
         <a
-          class="social"
-          href={s.href}
-          target="_blank"
-          rel="noopener"
-          style={`--c: ${s.color}`}
+          class:list={['chip', `chip--${c.label.toLowerCase()}`]}
+          href={c.href}
+          target={c.label === 'email' ? undefined : '_blank'}
+          rel={c.label === 'email' ? undefined : 'noopener'}
+          style={`--x: ${c.pos.x}; --y: ${c.pos.y}; --r: ${c.pos.r}`}
         >
-          {s.label.toLowerCase()}
+          {c.label.toLowerCase()}
         </a>
       ))}
     </div>
-    <figure class="portrait-wrap">
-      <Image
-        class="portrait"
-        src={portrait}
-        alt="Casual portrait of Zeb Goriely"
-        widths={[120, 240]}
-        sizes="76px"
-        loading="lazy"
-      />
-      <figcaption class="caption">you found me!</figcaption>
-    </figure>
   </section>
 </BaseLayout>
 
@@ -110,42 +125,143 @@ function withLinks(p: string): string {
     text-underline-offset: 0.3em;
   }
 
-  .find-me { text-align: center; }
-  .find-heading { margin-bottom: 1.25rem; }
-  .socials {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 1rem;
-  }
-  .social {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    min-width: 92px;
-    padding: 1.15em 1.4em;
-    border-radius: 999px;
-    background: var(--c, var(--yellow));
-    color: var(--ink);
-    text-decoration: none;
-    font-size: var(--size-small);
-    border: 2px solid var(--ink);
-    transition: transform 0.15s ease;
-  }
-  .social:hover { transform: translateY(-3px) rotate(-2deg); }
-  .social.email { --c: var(--blue); color: #fff; border-radius: 8px; }
-  /* label colors chosen so text stays legible on each sticker */
-  .social[style*='f0524f'] { color: #fff; } /* youtube red */
-  .social[style*='9b6867'] { color: #fff; } /* tiktok brown */
-  .social[style*='7fbf74'] { color: #fff; } /* linkedin green */
+  /* ---------- "find me" game ---------- */
 
-  .portrait-wrap { margin: 2.5rem auto 0; width: max-content; }
-  .portrait {
-    width: 76px;
-    height: 76px;
+  .find-me { text-align: center; }
+  .find-heading { font-size: var(--size-h3); font-weight: 400; }
+  .find-hint { margin: 0.15rem 0 1rem; }
+
+  .find-game {
+    position: relative;
+    width: min(360px, 100%);
+    height: 340px;
+    margin: 0 auto;
+    touch-action: pan-y;
+  }
+  .find-photo {
+    position: absolute;
+    left: 50%;
+    top: 44%;
+    translate: -50% -50%;
+    margin: 0;
+  }
+  .find-photo .portrait {
+    width: 130px;
+    height: 130px;
     border-radius: 50%;
     object-fit: cover;
-    margin-inline: auto;
+    border: 2px solid var(--ink);
+    box-shadow: 0 10px 24px -12px rgba(34, 34, 34, 0.5);
   }
-  .portrait-wrap .caption { margin-top: 0.5rem; }
+  .find-photo .caption { margin-top: 0.6rem; white-space: nowrap; }
+
+  .chip {
+    position: absolute;
+    left: var(--x);
+    top: var(--y);
+    rotate: var(--r);
+    display: inline-grid;
+    place-items: center;
+    border: 2px solid var(--ink);
+    font-size: var(--size-small);
+    text-decoration: none;
+    cursor: grab;
+    touch-action: none;
+    user-select: none;
+    -webkit-user-select: none;
+    z-index: 2;
+    transition: rotate 0.25s ease, scale 0.25s ease;
+  }
+  .chip:hover { scale: 1.06; }
+  .chip.is-dragging {
+    cursor: grabbing;
+    scale: 1.1;
+    rotate: 0deg;
+    z-index: 10;
+    transition: none;
+  }
+
+  .chip--email {
+    width: 74px;
+    height: 74px;
+    border-radius: 14px;
+    background: var(--blue);
+    color: #fff;
+  }
+  .chip--instagram {
+    width: 94px;
+    height: 94px;
+    border-radius: 50%;
+    background: var(--yellow);
+    color: var(--ink);
+  }
+  .chip--youtube {
+    width: 110px;
+    height: 46px;
+    border-radius: 999px;
+    background: var(--red);
+    color: #fff;
+  }
+  .chip--tiktok {
+    width: 62px;
+    height: 62px;
+    border-radius: 14px;
+    background: var(--brown);
+    color: #fff;
+  }
+  .chip--linkedin {
+    width: 110px;
+    height: 46px;
+    border-radius: 999px;
+    background: var(--green);
+    color: #fff;
+  }
 </style>
+
+<script>
+  // "find me" game — drag the sticker chips to reveal the portrait.
+  // A short drag suppresses the link's click; a plain tap still follows it.
+  const game = document.querySelector<HTMLElement>('.find-game');
+  if (game) {
+    game.querySelectorAll<HTMLAnchorElement>('.chip').forEach((chip) => {
+      let dragging = false;
+      let moved = false;
+      let sx = 0;
+      let sy = 0;
+      let bx = 0;
+      let by = 0;
+
+      chip.addEventListener('pointerdown', (e) => {
+        dragging = true;
+        moved = false;
+        sx = e.clientX;
+        sy = e.clientY;
+        bx = chip.offsetLeft;
+        by = chip.offsetTop;
+        chip.setPointerCapture(e.pointerId);
+        chip.classList.add('is-dragging');
+      });
+
+      chip.addEventListener('pointermove', (e) => {
+        if (!dragging) return;
+        const dx = e.clientX - sx;
+        const dy = e.clientY - sy;
+        if (Math.abs(dx) > 3 || Math.abs(dy) > 3) moved = true;
+        const maxX = Math.max(game.clientWidth - chip.offsetWidth, 0);
+        const maxY = Math.max(game.clientHeight - chip.offsetHeight, 0);
+        chip.style.left = `${Math.min(Math.max(bx + dx, 0), maxX)}px`;
+        chip.style.top = `${Math.min(Math.max(by + dy, 0), maxY)}px`;
+      });
+
+      const end = () => {
+        dragging = false;
+        chip.classList.remove('is-dragging');
+      };
+      chip.addEventListener('pointerup', end);
+      chip.addEventListener('pointercancel', end);
+      chip.addEventListener('click', (e) => {
+        if (moved) e.preventDefault();
+      });
+    });
+  }
+</script>
