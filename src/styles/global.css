@@ -199,7 +199,9 @@ a { color: inherit; }
   border: 2px solid var(--ink);
   background: var(--bg);
   cursor: pointer;
-  padding: 9px 12px;
+  padding: 0;
+  place-content: center;
+  gap: 5px;
 }
 .nav-toggle i {
   display: block;
@@ -207,12 +209,17 @@ a { color: inherit; }
   height: 2.5px;
   background: var(--ink);
   border-radius: 2px;
-  margin: 4px auto;
-  transition: transform 0.25s ease, opacity 0.2s ease;
+  transition: transform 0.3s ease;
 }
-.nav-toggle[aria-expanded='true'] i:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
-.nav-toggle[aria-expanded='true'] i:nth-child(2) { opacity: 0; }
-.nav-toggle[aria-expanded='true'] i:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+/* open: the middle bar rotates and stretches into the diagonal —
+   the three lines morph into a Z (top/bottom bars already land exactly
+   on the Z's horizontal strokes) */
+.nav-toggle[aria-expanded='true'] i:nth-child(2) {
+  transform: rotate(-37deg) scaleX(1.25);
+}
+@media (prefers-reduced-motion: reduce) {
+  .nav-toggle i { transition: none; }
+}
 
 .nav-overlay {
   position: fixed;
@@ -281,7 +288,7 @@ a { color: inherit; }
 /* on narrow screens the sticker row gives way to the menu */
 @media (max-width: 640px) {
   .nav-row { display: none; }
-  .nav-toggle { display: block; }
+  .nav-toggle { display: grid; }
 }
 
 /* ---------- layout helpers ---------- */
