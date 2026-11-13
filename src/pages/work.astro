@@ -27,7 +27,7 @@ const comingSoon = [
       <a class="tile reveal" href={c.href}>
         <span class="tile-label">
           {c.label}
-          <span class="orbit" aria-hidden="true"><i class="orbit-dot"></i></span>
+          <span class="orbit" aria-hidden="true"><span class="orbit-mover"><i class="orbit-dot"></i></span></span>
         </span>
         <Image
           class="tile-img"
@@ -43,7 +43,7 @@ const comingSoon = [
       <div class="tile tile--soon reveal" aria-label={`${c.label.replace('\n', ' ')} — coming soon`}>
         <span class="tile-label">
           {c.label}<br /><small>coming soon</small>
-          <span class="orbit" aria-hidden="true"><i class="orbit-dot"></i></span>
+          <span class="orbit" aria-hidden="true"><span class="orbit-mover"><i class="orbit-dot"></i></span></span>
         </span>
       </div>
     ))}
@@ -111,7 +111,9 @@ const comingSoon = [
   .tile--soon { cursor: default; }
 
   /* a small red circle that spins around the text while the tile is
-     hovered, and disappears again when it isn't */
+     hovered, and disappears again when it isn't. The elliptical path is
+     built from 12 translate keyframes (box-relative percentages), so it
+     works in every browser — no offset-path needed. */
   .orbit {
     position: absolute;
     inset: -0.55em -1em;
@@ -122,31 +124,41 @@ const comingSoon = [
   .tile:hover .orbit,
   .tile:focus-visible .orbit { opacity: 1; }
 
+  .orbit-mover { position: absolute; inset: 0; }
   .orbit-dot {
     position: absolute;
-    top: 0;
-    left: 0;
+    top: -7px;
+    left: -7px;
     width: 14px;
     height: 14px;
     border-radius: 50%;
     background: var(--red);
     box-shadow: 0 1px 3px rgba(34, 34, 34, 0.35);
-    offset-path: ellipse(50% 50% at 50% 50%);
-    offset-anchor: center;
-    offset-rotate: 0deg;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .orbit-mover { translate: 50% 0; } /* park the dot above the text */
   }
   @media (prefers-reduced-motion: no-preference) {
-    .tile:hover .orbit-dot,
-    .tile:focus-visible .orbit-dot {
+    .tile:hover .orbit-mover,
+    .tile:focus-visible .orbit-mover {
       animation: orbit-travel 1.6s linear infinite;
     }
   }
+  /* 30° stops around an ellipse inscribed in the orbit box
+     (x = 50% + 50%·cos θ, y = 50% + 50%·sin θ, clockwise) */
   @keyframes orbit-travel {
-    from { offset-distance: 0%; }
-    to { offset-distance: 100%; }
-  }
-  /* graceful fallback: hide the orbit on browsers without motion path */
-  @supports not (offset-path: ellipse(50% 50% at 50% 50%)) {
-    .orbit { display: none; }
+    0% { translate: 100% 50%; }
+    8.3% { translate: 93.3% 75%; }
+    16.7% { translate: 75% 93.3%; }
+    25% { translate: 50% 100%; }
+    33.3% { translate: 25% 93.3%; }
+    41.7% { translate: 6.7% 75%; }
+    50% { translate: 0% 50%; }
+    58.3% { translate: 6.7% 25%; }
+    66.7% { translate: 25% 6.7%; }
+    75% { translate: 50% 0%; }
+    83.3% { translate: 75% 6.7%; }
+    91.7% { translate: 93.3% 25%; }
+    100% { translate: 100% 50%; }
   }
 </style>
