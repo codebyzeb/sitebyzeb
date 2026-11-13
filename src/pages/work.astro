@@ -116,7 +116,7 @@ const comingSoon = [
      works in every browser — no offset-path needed. */
   .orbit {
     position: absolute;
-    inset: -0.55em -1em;
+    inset: -0.65em -1.1em;
     opacity: 0;
     pointer-events: none;
     transition: opacity 0.2s ease;
@@ -127,13 +127,13 @@ const comingSoon = [
   .orbit-mover { position: absolute; inset: 0; }
   .orbit-dot {
     position: absolute;
-    top: -7px;
-    left: -7px;
-    width: 14px;
-    height: 14px;
+    top: -14px;
+    left: -14px;
+    width: 28px;
+    height: 28px;
     border-radius: 50%;
     background: var(--red);
-    box-shadow: 0 1px 3px rgba(34, 34, 34, 0.35);
+    box-shadow: 0 2px 6px rgba(34, 34, 34, 0.35);
   }
   @media (prefers-reduced-motion: reduce) {
     .orbit-mover { translate: 50% 0; } /* park the dot above the text */
@@ -141,7 +141,7 @@ const comingSoon = [
   @media (prefers-reduced-motion: no-preference) {
     .tile:hover .orbit-mover,
     .tile:focus-visible .orbit-mover {
-      animation: orbit-travel 1.6s linear infinite;
+      animation: orbit-travel 2.1s linear infinite;
     }
   }
   /* 30° stops around an ellipse inscribed in the orbit box
