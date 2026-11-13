@@ -10,7 +10,12 @@ import poster from '../assets/home-video-poster.png';
       <div class="deco deco--circle" aria-hidden="true"></div>
       <div class="deco deco--flag" aria-hidden="true"></div>
       <div class="deco deco--para" aria-hidden="true"></div>
-      <VideoEmbed provider="vimeo" id="1226923169" title="Zeb Goriely — showreel">
+      <VideoEmbed
+        provider="vimeo"
+        id="1226923169"
+        title="Zeb Goriely — showreel"
+        expandable
+      >
         <img slot="poster" class="embed-poster" src={poster.src} alt="" />
       </VideoEmbed>
     </div>
@@ -27,33 +32,36 @@ import poster from '../assets/home-video-poster.png';
     max-width: 640px;
     margin-inline: auto;
   }
-  /* shapes peeking from behind the video panel, like the original */
+  /* shapes peeking from behind the video panel, like the original:
+     red circle at the top-right corner, yellow flag pointing down on the
+     left edge at mid-height, blue parallelogram along the bottom edge */
   .deco--circle {
-    top: -28px;
-    right: -30px;
-    width: 96px;
-    height: 96px;
+    top: -38px;
+    right: -38px;
+    width: 108px;
+    height: 108px;
     border-radius: 50%;
     background: var(--red);
     z-index: -1;
   }
   .deco--flag {
-    left: -26px;
-    bottom: 30%;
+    left: -38px;
+    top: 38%;
     width: 0;
     height: 0;
-    border-top: 52px solid var(--yellow-note);
-    border-right: 40px solid transparent;
-    transform: rotate(12deg);
+    border-top: 60px solid var(--yellow-note);
+    border-left: 46px solid transparent;
+    border-right: 14px solid transparent;
+    rotate: 12deg;
     z-index: -1;
   }
   .deco--para {
-    bottom: -20px;
-    right: 8%;
-    width: 110px;
-    height: 64px;
+    bottom: -26px;
+    right: 9%;
+    width: 132px;
+    height: 60px;
     background: var(--blue);
-    transform: skewX(-18deg) rotate(-4deg);
+    transform: skewX(-18deg) rotate(-5deg);
     z-index: -1;
   }
 </style>

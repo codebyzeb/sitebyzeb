@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import CircleMark from '../components/CircleMark.astro';
 import { Image } from 'astro:assets';
 import shortFilms from '../assets/work-short-films.jpg';
 import freelance from '../assets/work-freelance.png';
@@ -25,7 +26,10 @@ const comingSoon = [
   <div class="grid">
     {cards.map((c) => (
       <a class="tile reveal" href={c.href}>
-        <span class="tile-label">{c.label}</span>
+        <span class="tile-label">
+          {c.label}
+          <CircleMark />
+        </span>
         <Image
           class="tile-img"
           src={c.img}
@@ -34,13 +38,13 @@ const comingSoon = [
           sizes="(max-width: 760px) 92vw, 480px"
           loading="lazy"
         />
-        <span class="tile-dot" aria-hidden="true"></span>
       </a>
     ))}
     {comingSoon.map((c) => (
       <div class="tile tile--soon reveal" aria-label={`${c.label.replace('\n', ' ')} — coming soon`}>
         <span class="tile-label">
           {c.label}<br /><small>coming soon</small>
+          <CircleMark />
         </span>
       </div>
     ))}
@@ -77,7 +81,7 @@ const comingSoon = [
     line-height: 1.05;
     text-align: center;
     white-space: pre-line;
-    transition: opacity 0.3s ease;
+    transition: opacity 0.3s ease, color 0.3s ease;
   }
   .tile-label small {
     display: block;
@@ -99,21 +103,45 @@ const comingSoon = [
   }
   .tile:hover .tile-img,
   .tile:focus-visible .tile-img { opacity: 1; }
-  .tile:hover .tile-label { color: #fff; text-shadow: 0 1px 8px rgba(0,0,0,0.4); }
+  .tile:hover .tile-label { color: #fff; text-shadow: 0 1px 8px rgba(0, 0, 0, 0.4); }
   /* on touch there is no hover: show the image always */
   @media (hover: none) {
     .tile-img { opacity: 1; }
-    .tile-label { color: #fff; text-shadow: 0 1px 8px rgba(0,0,0,0.4); }
+    .tile-label { color: #fff; text-shadow: 0 1px 8px rgba(0, 0, 0, 0.4); }
   }
   .tile--soon { cursor: default; }
-  .tile-dot {
+
+  /* the circling red pen: hidden until the tile is hovered, then the
+     ellipse draws itself around the text in one stroke */
+  .circle-mark {
     position: absolute;
-    top: 10px;
-    left: 10px;
-    width: 26px;
-    height: 26px;
-    border-radius: 50%;
-    background: var(--red);
-    z-index: 3;
+    inset: -0.45em -0.85em -0.6em -0.85em;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.25s ease;
+  }
+  .tile:hover .circle-mark,
+  .tile:focus-visible .circle-mark { opacity: 1; }
+  .circle-mark ellipse {
+    fill: none;
+    stroke: var(--red);
+    stroke-width: 3.5px;
+    stroke-linecap: round;
+    stroke-dasharray: 100;
+    stroke-dashoffset: 100;
+  }
+  .tile:hover .circle-mark ellipse,
+  .tile:focus-visible .circle-mark ellipse {
+    animation: circle-draw 0.8s ease-out forwards;
+  }
+  @keyframes circle-draw {
+    to { stroke-dashoffset: 0; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .tile:hover .circle-mark ellipse,
+    .tile:focus-visible .circle-mark ellipse {
+      animation: none;
+      stroke-dashoffset: 0;
+    }
   }
 </style>

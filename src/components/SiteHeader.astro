@@ -2,27 +2,29 @@
 const path = Astro.url.pathname;
 const isActive = (prefix: string) =>
   prefix === '/' ? path === '/' : path.startsWith(prefix);
+
+const links = [
+  { label: 'site', rest: 'byzeb', href: '/', variant: 'note' },
+  { label: 'work', rest: 'byzeb', href: '/work/', variant: 'triangle' },
+  { label: 'info', rest: 'byzeb', href: '/info/', variant: 'star' },
+];
 ---
 
 <header class="site-header">
   <a class="site-title" href="/">Zeb Goriely</a>
   <nav class="nav-row" aria-label="Main">
-    <a class="sticker sticker--note" href="/" aria-current={isActive('/') ? 'page' : undefined}>
-      Site
-    </a>
-    <a
-      class="sticker sticker--triangle"
-      href="/work/"
-      aria-current={isActive('/work') ? 'page' : undefined}
-    >
-      Work
-    </a>
-    <a
-      class="sticker sticker--star"
-      href="/info/"
-      aria-current={isActive('/info') ? 'page' : undefined}
-    >
-      Info
-    </a>
+    {links.map((l, i) => (
+      <a
+        class:list={['sticker', `sticker--${l.variant}`]}
+        href={l.href}
+        aria-current={isActive(l.href) ? 'page' : undefined}
+        style={`--i: ${i}`}
+      >
+        <span class="shape" aria-hidden="true"></span>
+        <span class="label">
+          {l.label}<span class="rest">{l.rest}</span>
+        </span>
+      </a>
+    ))}
   </nav>
 </header>
