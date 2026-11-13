@@ -1,0 +1,62 @@
+# freelance — content sheet
+
+BACKGROUND: #fffcf6
+TEXT (0,0) 0x0:
+      FREELANCE
+TEXT (221,222) 579x41:
+      Freelance
+TEXT (274,293) 480x90:
+      As a freelance filmmaker, Zeb has worked with a wide range of clients, creating launch videos, documentary shorts, and highlight videos. Working primarily as a self-shooter, he offers bespoke film packages which can include motion graphics and hand-drawn visualisations.
+      For inquiries, contact Zeb at filmbyzeb@gmail.com  [filmbyzeb@gmail.co]
+TEXT (259,433) 243x50:
+      Ideas for Our Time:
+      Consciousness & Music
+      Documentary • Full Package (in-house)
+TEXT (522,433) 243x50:
+      Ideas for Our Time:
+      Alien Physics 
+      Documentary • Full Package (in-house)
+VIDEO (259,489) 243x140: https://youtu.be/nYS4FylZJ2Q?si=SLUHLHKbvU5N9wQ4
+VIDEO (522,489) 243x140: https://youtu.be/PlFOufpGArY?si=IaLvAQMPP13a42YL
+TEXT (259,685) 243x34:
+      Jace AI Demo
+      Launch Video • Full Package
+TEXT (522,685) 243x34:
+      PicoLM Demo
+      Launch Video • Full Package
+VIDEO (259,725) 243x140: https://www.youtube.com/watch?v=xj6p5iCLEzo
+VIDEO (522,725) 243x140: https://www.youtube.com/watch?v=llRUKwqMah4
+TEXT (259,925) 243x50:
+      Cambridge University
+      Computer Lab
+      Documentary • Full Package
+TEXT (522,925) 243x50:
+      Queens' College
+      Cambridge
+      45 Access Videos • Full Package
+VIDEO (259,985) 243x140: https://www.youtube.com/watch?v=TJV_OvF0dVM&t=4s
+VIDEO (522,985) 243x140: https://youtu.be/vqtkNgaXaGc?si=pqBtLTCNcHM8R1z9
+TEXT (259,1185) 243x34:
+      Watersprite Film Festival
+      Documentary • Editing Package
+TEXT (522,1185) 243x34:
+      Temor
+      Music Session • Full Package
+VIDEO (259,1225) 243x140: https://www.youtube.com/watch?v=TTxFpNRMMJk
+VIDEO (522,1225) 243x140: https://www.youtube.com/watch?v=BSjOa8lEGrY
+TEXT (259,1425) 243x34:
+      onepointfour
+      Highlight Video • Full Package
+TEXT (522,1425) 243x34:
+      Hannibal Buress
+      Highlight Video • Editing Package
+IFRAME (297,1465) 165x240: https://www.instagram.com/reel/C9cIgu_O6Kc/?utm_source=ig_embed&amp;utm_campaign=loading
+IFRAME (560,1465) 165x240: https://www.instagram.com/tv/B9zu4emngjh/?utm_source=ig_embed&amp;utm_campaign=loading
+TEXT (259,1717) 243x34:
+      ActNowFilm (Caroline)
+      Short-form doc • Editing Package
+TEXT (522,1717) 243x34:
+      ActNowFilm (Thaiane)
+      Short-form doc • Editing Package
+IFRAME (297,1757) 165x240: https://www.instagram.com/reel/DaVZAkjzwDi/?utm_source=ig_embed&amp;utm_campaign=loading
+IFRAME (560,1757) 165x240: https://www.instagram.com/reel/Db3U7cDTBcz/?utm_source=ig_embed&amp;utm_campaign=loading

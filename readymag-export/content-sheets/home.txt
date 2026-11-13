@@ -1,0 +1,38 @@
+# home — content sheet
+
+SHAPE (-468,-396) 88x8: rectangle bg=#686868 z=319
+SHAPE (-468,-384) 88x88: rectangle bg=#787878 z=320
+SHAPE (-468,-376) 88x8: rectangle bg=#686868 z=318
+SHAPE (-468,-376) 88x8: rectangle bg=#686868 z=322
+SHAPE (-468,-370) 88x8: rectangle bg=#686868 z=321
+SHAPE (430,-18) 73x73: icon bg=#7FBF74 z=325
+BACKGROUND: #fffcf6
+SHAPE (1023,0) 1024x755: rectangle bg=#FFDD00 z=323
+TEXT (752,1) 480x189:
+      SITEBYZEB [//]
+      WORKBYZEB [/work/]
+      INFOBYZEB [/freelance/]
+TEXT (326,8) 371x61:
+      Zeb Goriely
+SHAPE (483,75) 71x55: polygon bg=#F0524F z=311
+SHAPE (621,76) 73x59: icon bg=#3DA5F0 z=314
+SHAPE (347,94) 46x37: rectangle bg=#F8EF4C z=308
+TEXT (643,96) 71x30:
+      INFOBYZEB
+TEXT (643,96) 34x30:
+      INFO [/research/]
+TEXT (350,96) 163x30:
+      SITEBYZEB
+TEXT (350,96) 34x30:
+      SITE [//]
+TEXT (497,97) 163x30:
+      WORKBYZEB
+TEXT (497,97) 46x30:
+      WORK [/work/]
+SHAPE (-165,105) 73x85: polygon bg=#F0524F z=328
+SHAPE (-96,163) 89x117: ellipse bg=#3DA5F0 z=327
+SHAPE (762,187) 116x116: ellipse bg=#F0524F z=303
+VIDEO (200,218) 645x366: https://vimeo.com/1226923169?fl=tl&fe=ec
+SHAPE (-71,254) 46x84: rectangle bg=#F0EF5B z=326
+SHAPE (146,394) 116x116: polygon bg=#F0EF5B z=302
+SHAPE (697,548) 116x75: rectangle bg=#3DA5F0 z=301

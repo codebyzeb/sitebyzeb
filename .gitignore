@@ -1,0 +1,17 @@
+# build output
+dist/
+.astro/
+
+# dependencies
+node_modules/
+
+# licensed fonts — do not commit (Typodermic licence, see fonts/ locally)
+fonts/
+public/fonts/*.woff2
+
+# original ReadyMag asset originals (93MB — kept locally only, archive externally)
+readymag-export/assets/
+
+# misc
+.DS_Store
+*.log

@@ -1,0 +1,22 @@
+# info — content sheet
+
+BACKGROUND: #fffcf6
+TEXT (547,184) 326x196:
+      Zeb is an award-winning filmmaker with a background in scientific research, having worked on a range of fiction, documentary, and experimental projects.
+      He was recently awarded the Best Micro Short award at the BFI Future Film Festival for his film 36,000 Words for Love. [https://www.youtube.com/watch?v=pZEWuO9X8ME&t=2s]
+      In 2024, he was the Festival Director for the 15th edition of Watersprite Film Festival. With a team of 60 students, he delivered a full weekend of free talks, screenings, and ceremonies celebrating the future of film and breaking down the barriers for those pursuing a career in the creative industries. [https://watersprite.org.uk/]
+      He recently completed a PhD in Computational Linguistics, exploring whether training AI models with sounds (instead of written language) can teach us something about how children first acquire language. 
+PICTURE (156,186) 315x220: image-ca38fdd4-a2da-463c-94b1-82026f9f7955.jpg
+TEXT (273,456) 480x16:
+      Contact
+FORM (377,512) 286x280: None
+TEXT (371,989) 284x16:
+      find me:
+BUTTON (463,1024) 105x44: 'youtube' bg=#F0524F radius=64 -> None
+BUTTON (469,1048) 94x94: 'instagram' bg=#F0EF5B radius=71 -> None
+PICTURE (490,1050) 58x58: image-bb375f61-2c25-4f05-be67-4eccd5f12c09.jpg
+BUTTON (412,1060) 64x64: 'email' bg=#3DA5F0 radius=0 -> None
+BUTTON (556,1064) 55x55: 'tiktok' bg=#9B6867 radius=8 -> None
+TEXT (481,1108) 76x19:
+      you found me!
+BUTTON (462,1133) 105x44: 'linkedin' bg=#7FBF74 radius=64 -> None

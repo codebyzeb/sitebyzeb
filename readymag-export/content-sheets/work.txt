@@ -1,0 +1,42 @@
+# work — content sheet
+
+BACKGROUND: #fffcf6
+SHAPE (127,176) 375x200: rectangle bg=#F0EF5B z=305
+PICTURE (127,176) 375x200: image-e5bea0fb-787e-4c4b-aae6-a9c2db71eeb6.jpg
+PICTURE (522,176) 374x200: image-103be3c7-8dcd-420a-accd-fb3d354e497a.png
+SHAPE (522,176) 375x200: rectangle bg=#F0EF5B z=306
+TEXT (210,253) 209x41:
+      short films [/shorts/]
+TEXT (224,253) 181x41:
+      short films [/shorts/]
+TEXT (628,253) 162x41:
+      freelance [/freelance/]
+TEXT (628,253) 162x41:
+      freelance [/freelance/]
+SHAPE (554,260) 30x30: ellipse bg=#F0524F z=319
+SHAPE (162,261) 30x30: ellipse bg=#F0524F z=324
+SHAPE (127,396) 375x200: rectangle bg=#F0EF5B z=307
+PICTURE (127,396) 375x200: image-72ebb437-2ae5-4222-90c8-4cd9fd934bcc.jpg
+SHAPE (523,396) 374x200: rectangle bg=#F0EF5B z=308
+PICTURE (523,396) 374x200: image-d392beca-2040-4318-bea5-0945893668d6.jpg
+TEXT (237,452) 154x82:
+      creative
+content [/content/]
+TEXT (240,452) 147x82:
+      creative [/content/]
+      content [/content/]
+TEXT (633,473) 151x41:
+      research [/content-draft/]
+TEXT (638,473) 142x41:
+      research [/content-draft/]
+SHAPE (162,481) 30x30: ellipse bg=#F0524F z=323
+SHAPE (554,481) 30x30: ellipse bg=#F0524F z=320
+SHAPE (127,616) 375x200: rectangle bg=#F0EF5B z=311
+SHAPE (522,616) 374x200: rectangle bg=#F0EF5B z=313
+TEXT (127,671) 375x100:
+      watersprite
+      film festival
+      coming soon
+TEXT (522,693) 375x59:
+      photography
+      coming soon

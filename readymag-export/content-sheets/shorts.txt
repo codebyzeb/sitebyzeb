@@ -1,0 +1,105 @@
+# shorts — content sheet
+
+BACKGROUND: #fffcf6
+TEXT (0,0) 0x0:
+      SHORT FILMS
+TEXT (220,222) 579x41:
+      Short Films
+TEXT (257,299) 507x34:
+      36,000 Words For Love
+      Experimental Documentary
+SHAPE (257,333) 507x280: rectangle bg=#000000 z=310
+SLIDESHOW (258,333) 507x280 [crossfade, autoplay]:
+      slide: image-b1024860-b4c3-4c8a-b4e0-959b709dd186.png caption={'blocks': [{'key': '61ohc', 'text': 'Type image caption here', 'entityRanges': [], 'depth': 0}], 'styles': [{'key': '61ohc', 'type': 'unstyled', 'inlineStyles': {'styles': [{'offset': 0, 'length': 23, 'styles': ['0;0', '1;1', '2;2', '3;3', '4;4']}], 'keys': ['FONT_SIZE', 'FONT_FAMILY', 'FONT_WEIGHT', 'FONT_STYLE', 'COLOR'], 'values': ['10', 'Inter', '400', 'normal', '00000064']}}], 'entityMap': {}, 'blocksMeta': [{'key': '61ohc', 'data': {'lineHeight': 12, 'align': 'align-center', 'sizesLinkedStatus': True, 'paddings': {'left': 37, 'right': 37, 'top': 10, 'bottom': 0}}}]}
+      slide: image-a72daf53-ac0f-4a6b-80e5-2f034fb46e64.jpg caption={'blocks': [{'key': '9edoc', 'text': 'Type image caption here', 'entityRanges': [], 'depth': 0}], 'styles': [{'key': '9edoc', 'type': 'unstyled', 'inlineStyles': {'styles': [{'offset': 0, 'length': 23, 'styles': ['0;0', '1;1', '2;2', '3;3', '4;4']}], 'keys': ['FONT_SIZE', 'FONT_FAMILY', 'FONT_WEIGHT', 'FONT_STYLE', 'COLOR'], 'values': ['10', 'Inter', '400', 'normal', '00000064']}}], 'entityMap': {}, 'blocksMeta': [{'key': '9edoc', 'data': {'lineHeight': 12, 'align': 'align-center', 'sizesLinkedStatus': True, 'paddings': {'left': 37, 'right': 37, 'top': 10, 'bottom': 0}}}]}
+      slide: image-be65365f-f490-446d-83ab-fb3bbf9af899.jpg caption={'blocks': [{'key': '88l0t', 'text': 'Type image caption here', 'entityRanges': [], 'depth': 0}], 'styles': [{'key': '88l0t', 'type': 'unstyled', 'inlineStyles': {'styles': [{'offset': 0, 'length': 23, 'styles': ['0;0', '1;1', '2;2', '3;3', '4;4']}], 'keys': ['FONT_SIZE', 'FONT_FAMILY', 'FONT_WEIGHT', 'FONT_STYLE', 'COLOR'], 'values': ['10', 'Inter', '400', 'normal', '00000064']}}], 'entityMap': {}, 'blocksMeta': [{'key': '88l0t', 'data': {'lineHeight': 12, 'align': 'align-center', 'sizesLinkedStatus': True, 'paddings': {'left': 37, 'right': 37, 'top': 10, 'bottom': 0}}}]}
+TEXT (278,347) 466x144:
+      An experimental non-fiction film documenting a weekend spent at the filmmaker's home, captured using nothing but a microphone and a vintage film camera.
+      The film won Best Micro Short at the BFI Future Film Festival 2024. Besides being screened at BFI Southbank, the film was also selected to screen at the Glasgow Film Theatre and Watershed, Bristol, as part of the festival's first-ever UK-wide programme.
+      The film has also screened at IndieFlicks and the Sunrise Film Festival, and won a Student Shiny Award.
+PICTURE (363,495) 112x80: image-e5f3708b-5941-417d-9b0c-4348e3679eda.jpg
+PICTURE (554,495) 112x80: image-12fa55cf-22ae-4b0e-9907-e6bf98a132c7.jpg
+BUTTON (429,585) 164x28: 'Watch the Film' bg=#7FBF74 radius=19 -> None
+TEXT (259,639) 507x34:
+      Visions of Cassine
+      Documentary
+SLIDESHOW (259,673) 506x280 [crossfade, autoplay]:
+      slide: image-5e775775-f863-4d06-99e9-d8e4648de688.png caption=''
+      slide: image-5550a0d7-ea58-40a2-983d-66594aecca54.png caption={'blocks': [{'key': 'bscat', 'text': 'Type image caption here', 'entityRanges': [], 'depth': 0}], 'styles': [{'key': 'bscat', 'type': 'unstyled', 'inlineStyles': {'styles': [{'offset': 0, 'length': 23, 'styles': ['0;0', '1;1', '2;2', '3;3', '4;4']}], 'keys': ['FONT_SIZE', 'FONT_FAMILY', 'FONT_WEIGHT', 'FONT_STYLE', 'COLOR'], 'values': ['10', 'Inter', '400', 'normal', '00000064']}}], 'entityMap': {}, 'blocksMeta': [{'key': 'bscat', 'data': {'lineHeight': 12, 'align': 'align-center', 'sizesLinkedStatus': True, 'paddings': {'left': 37, 'right': 37, 'top': 10, 'bottom': 0}}}]}
+      slide: image-a7068ebb-cd61-4f2e-ab44-fcce0081c506.png caption={'blocks': [{'key': 'fmrtm', 'text': 'Type image caption here', 'entityRanges': [], 'depth': 0}], 'styles': [{'key': 'fmrtm', 'type': 'unstyled', 'inlineStyles': {'styles': [{'offset': 0, 'length': 23, 'styles': ['0;0', '1;1', '2;2', '3;3', '4;4']}], 'keys': ['FONT_SIZE', 'FONT_FAMILY', 'FONT_WEIGHT', 'FONT_STYLE', 'COLOR'], 'values': ['10', 'Inter', '400', 'normal', '00000064']}}], 'entityMap': {}, 'blocksMeta': [{'key': 'fmrtm', 'data': {'lineHeight': 12, 'align': 'align-center', 'sizesLinkedStatus': True, 'paddings': {'left': 37, 'right': 37, 'top': 10, 'bottom': 0}}}]}
+      slide: image-fddee55e-4573-4339-9445-dff3b52d2239.png caption={'blocks': [{'key': '3q58o', 'text': 'Type image caption here', 'entityRanges': [], 'depth': 0}], 'styles': [{'key': '3q58o', 'type': 'unstyled', 'inlineStyles': {'styles': [{'offset': 0, 'length': 23, 'styles': ['0;0', '1;1', '2;2', '3;3', '4;4']}], 'keys': ['FONT_SIZE', 'FONT_FAMILY', 'FONT_WEIGHT', 'FONT_STYLE', 'COLOR'], 'values': ['10', 'Inter', '400', 'normal', '00000064']}}], 'entityMap': {}, 'blocksMeta': [{'key': '3q58o', 'data': {'lineHeight': 12, 'align': 'align-center', 'sizesLinkedStatus': True, 'paddings': {'left': 37, 'right': 37, 'top': 10, 'bottom': 0}}}]}
+SHAPE (260,673) 505x280: rectangle bg=#000000 z=348
+TEXT (278,693) 466x112:
+      A documentary about the Duemila30 Lab, a 10-day filmmaking residency that brought 10 social impact filmmakers to Cassine in Italy. The filmmakers were tasked with making short films that engaged with the local community within just 10 days. This documentary about the experience was made within the same 10 days, completed in time for the final screening in the historic Church of San Francesco.
+      The film was lightly edited the week after to include footage from the final screening, and this version was shown at the Closing Ceremony of the Duemila30 Festival in Milan.
+PICTURE (295,833) 118x88: image-8f0610e9-f6f1-46a6-bfa7-b43aaaf462fe.jpg
+PICTURE (604,833) 121x88: image-185f4339-e30a-4d41-9a77-f89f28ea9f93.jpg
+BUTTON (430,863) 164x28: 'Watch the Film' bg=#7FBF74 radius=19 -> None
+TEXT (258,979) 507x34:
+      Littlest Student
+      Comedy Animation 
+SLIDESHOW (258,1013) 506x280 [crossfade, autoplay]:
+      slide: image-45060526-9a4d-46fb-a80c-75b476135fd3.jpg caption={'blocks': [{'key': 'a4dqq', 'text': 'Type image caption here', 'entityRanges': [], 'depth': 0}], 'styles': [{'key': 'a4dqq', 'type': 'unstyled', 'inlineStyles': {'styles': [{'offset': 0, 'length': 23, 'styles': ['0;0', '1;1', '2;2', '3;3', '4;4']}], 'keys': ['FONT_SIZE', 'FONT_FAMILY', 'FONT_WEIGHT', 'FONT_STYLE', 'COLOR'], 'values': ['10', 'Inter', '400', 'normal', '00000064']}}], 'entityMap': {}, 'blocksMeta': [{'key': 'a4dqq', 'data': {'lineHeight': 12, 'align': 'align-center', 'sizesLinkedStatus': True, 'paddings': {'left': 37, 'right': 37, 'top': 10, 'bottom': 0}}}]}
+      slide: image-90b2d6e7-64ac-47e0-bce1-602a2b775ccb.jpg caption=''
+      slide: image-9149dcdb-7aa5-48d4-a87d-22bbaa6931ef.jpg caption={'blocks': [{'key': '2a5er', 'text': 'Type image caption here', 'entityRanges': [], 'depth': 0}], 'styles': [{'key': '2a5er', 'type': 'unstyled', 'inlineStyles': {'styles': [{'offset': 0, 'length': 23, 'styles': ['0;0', '1;1', '2;2', '3;3', '4;4']}], 'keys': ['FONT_SIZE', 'FONT_FAMILY', 'FONT_WEIGHT', 'FONT_STYLE', 'COLOR'], 'values': ['10', 'Inter', '400', 'normal', '00000064']}}], 'entityMap': {}, 'blocksMeta': [{'key': '2a5er', 'data': {'lineHeight': 12, 'align': 'align-center', 'sizesLinkedStatus': True, 'paddings': {'left': 37, 'right': 37, 'top': 10, 'bottom': 0}}}]}
+SHAPE (258,1013) 507x280: rectangle bg=#000000 z=328
+TEXT (320,1053) 384x112:
+      An animated film about a student named Little who struggles to fit into their new life at university.
+      Written by Zeb Goriely and Sophie Stemmons. Animated, directed and edited by Zeb Goriely.
+      First place at the Film at Jesus competition in Cambridge.
+BUTTON (431,1173) 164x28: 'Watch the Film' bg=#7FBF74 radius=19 -> None
+TEXT (259,1319) 506x34:
+      Exhibit 74
+      Collaborative Film
+SLIDESHOW (259,1353) 507x280 [crossfade, autoplay]:
+      slide: image-2396e7e9-d526-4cc1-b83d-91f74cfd42ae.jpg caption={'blocks': [{'key': '8pot3', 'text': 'Type image caption here', 'entityRanges': [], 'depth': 0}], 'styles': [{'key': '8pot3', 'type': 'unstyled', 'inlineStyles': {'styles': [{'offset': 0, 'length': 23, 'styles': ['0;0', '1;1', '2;2', '3;3', '4;4']}], 'keys': ['FONT_SIZE', 'FONT_FAMILY', 'FONT_WEIGHT', 'FONT_STYLE', 'COLOR'], 'values': ['10', 'Inter', '400', 'normal', '00000064']}}], 'entityMap': {}, 'blocksMeta': [{'key': '8pot3', 'data': {'lineHeight': 12, 'align': 'align-center', 'sizesLinkedStatus': True, 'paddings': {'left': 37, 'right': 37, 'top': 10, 'bottom': 0}}}]}
+      slide: image-c3aed31c-dcae-4bfb-bc03-c58aba277692.jpg caption=''
+SHAPE (259,1353) 507x280: rectangle bg=#000000 z=356
+TEXT (278,1383) 466x84:
+      A collaborative film organised by GunPowderHouse, where ten directors each shot one scene of a film, in reverse, only being allowed to see the two scenes that were shot before theirs. Completed over the course of a year, Zeb was the final director to take part, directing the opening scene of the film.
+PICTURE (313,1453) 161x80: image-c858139a-f32a-41e4-950e-4d06ca113796.png
+PICTURE (555,1453) 150x80: image-cf0f61a1-646d-4a06-94b8-8b8dd2a8a350.png
+BUTTON (431,1553) 164x28: 'Watch the Trailer' bg=#7FBF74 radius=19 -> None
+TEXT (257,1660) 507x34:
+      Unwell Woman
+      Drama
+SLIDESHOW (258,1693) 507x280 [crossfade, autoplay]:
+      slide: image-25dc2607-87ea-4431-8160-82b449dfb198.png caption={'blocks': [{'key': '88l0t', 'text': 'Type image caption here', 'entityRanges': [], 'depth': 0}], 'styles': [{'key': '88l0t', 'type': 'unstyled', 'inlineStyles': {'styles': [{'offset': 0, 'length': 23, 'styles': ['0;0', '1;1', '2;2', '3;3', '4;4']}], 'keys': ['FONT_SIZE', 'FONT_FAMILY', 'FONT_WEIGHT', 'FONT_STYLE', 'COLOR'], 'values': ['10', 'Inter', '400', 'normal', '00000064']}}], 'entityMap': {}, 'blocksMeta': [{'key': '88l0t', 'data': {'lineHeight': 12, 'align': 'align-center', 'sizesLinkedStatus': True, 'paddings': {'left': 37, 'right': 37, 'top': 10, 'bottom': 0}}}]}
+      slide: image-b006a7b8-4e3e-4270-a79c-0c46d385e351.jpg caption={'blocks': [{'key': 'clk1p', 'text': 'Type image caption here', 'entityRanges': [], 'depth': 0}], 'styles': [{'key': 'clk1p', 'type': 'unstyled', 'inlineStyles': {'styles': [{'offset': 0, 'length': 23, 'styles': ['0;0', '1;1', '2;2', '3;3', '4;4']}], 'keys': ['FONT_SIZE', 'FONT_FAMILY', 'FONT_WEIGHT', 'FONT_STYLE', 'COLOR'], 'values': ['10', 'Inter', '400', 'normal', '00000064']}}], 'entityMap': {}, 'blocksMeta': [{'key': 'clk1p', 'data': {'lineHeight': 12, 'align': 'align-center', 'sizesLinkedStatus': True, 'paddings': {'left': 37, 'right': 37, 'top': 10, 'bottom': 0}}}]}
+      slide: image-6af6ece0-1840-401c-a485-adc5ccd09789.jpg caption={'blocks': [{'key': 'fkqtr', 'text': 'Type image caption here', 'entityRanges': [], 'depth': 0}], 'styles': [{'key': 'fkqtr', 'type': 'unstyled', 'inlineStyles': {'styles': [{'offset': 0, 'length': 23, 'styles': ['0;0', '1;1', '2;2', '3;3', '4;4']}], 'keys': ['FONT_SIZE', 'FONT_FAMILY', 'FONT_WEIGHT', 'FONT_STYLE', 'COLOR'], 'values': ['10', 'Inter', '400', 'normal', '00000064']}}], 'entityMap': {}, 'blocksMeta': [{'key': 'fkqtr', 'data': {'lineHeight': 12, 'align': 'align-center', 'sizesLinkedStatus': True, 'paddings': {'left': 37, 'right': 37, 'top': 10, 'bottom': 0}}}]}
+SHAPE (258,1693) 507x280: rectangle bg=#000000 z=317
+TEXT (278,1705) 466x70:
+      A horror-flecked psycho-drama that digs into a dark history of hurt, lies, and the traumas of womanhood. Written and directed by Daniella DeVinter, shot in 2022.
+      Zeb was one of the two cinematographers, and was the lighting designer and sound recorder during production. He was then the primary editor of the film.
+PICTURE (415,1811) 126x84: image-44e24243-dd7b-4c9b-be75-d3cb6afd0521.jpg
+PICTURE (278,1813) 100x152: image-3674fa8c-0c51-4f8c-af71-1f4943e58fe1.jpg
+PICTURE (621,1813) 123x82: image-2a537d5e-07af-4868-ac2c-536a5ea970b2.jpg
+BUTTON (429,1913) 164x28: 'In Festivals' bg=#7FBF74 radius=19 -> None
+TEXT (258,1999) 506x34:
+      Convalescence
+      Drama
+SLIDESHOW (258,2033) 507x280 [crossfade, autoplay]:
+      slide: image-1c014757-8a97-4848-b1ff-6b2a4ded0f68.png caption={'blocks': [{'key': 'uag4', 'text': 'Type image caption here', 'entityRanges': [], 'depth': 0}], 'styles': [{'key': 'uag4', 'type': 'unstyled', 'inlineStyles': {'styles': [{'offset': 0, 'length': 23, 'styles': ['0;0', '1;1', '2;2', '3;3', '4;4']}], 'keys': ['FONT_SIZE', 'FONT_FAMILY', 'FONT_WEIGHT', 'FONT_STYLE', 'COLOR'], 'values': ['10', 'Inter', '400', 'normal', '00000064']}}], 'entityMap': {}, 'blocksMeta': [{'key': 'uag4', 'data': {'lineHeight': 12, 'align': 'align-center', 'sizesLinkedStatus': True, 'paddings': {'left': 37, 'right': 37, 'top': 10, 'bottom': 0}}}]}
+      slide: image-04d26ad7-1af3-41ea-a7f2-007ee2513741.png caption=''
+      slide: image-c00d5c58-df55-4aa6-adf2-2da88587976b.png caption={'blocks': [{'key': '20o8e', 'text': 'Type image caption here', 'entityRanges': [], 'depth': 0}], 'styles': [{'key': '20o8e', 'type': 'unstyled', 'inlineStyles': {'styles': [{'offset': 0, 'length': 23, 'styles': ['0;0', '1;1', '2;2', '3;3', '4;4']}], 'keys': ['FONT_SIZE', 'FONT_FAMILY', 'FONT_WEIGHT', 'FONT_STYLE', 'COLOR'], 'values': ['10', 'Inter', '400', 'normal', '00000064']}}], 'entityMap': {}, 'blocksMeta': [{'key': '20o8e', 'data': {'lineHeight': 12, 'align': 'align-center', 'sizesLinkedStatus': True, 'paddings': {'left': 37, 'right': 37, 'top': 10, 'bottom': 0}}}]}
+SHAPE (258,2033) 507x280: rectangle bg=#000000 z=342
+TEXT (279,2033) 466x112:
+      Recovering from a mysterious accident, Joss seals himself off from the world, turning to astronomy and living out his life in an observatory. But when he makes an important discovery, his perceptions of reality, and his own past, begin to change into something he can hardly recognise. Convalescence is a voyage into the unknown - whether it be through a telescope or under our very noses. 
+      This was Zeb's first short film, written by Benedict Mulcare, shot in 2019 and completed in 2021. 
+PICTURE (278,2153) 112x62: image-666bfd58-198b-4bbf-9f49-32213173f7c0.webp
+PICTURE (405,2153) 178x100: image-bd84ffef-ee7e-4d6d-b2cd-b0a541d2795b.webp
+PICTURE (599,2153) 146x110: image-5345e697-3aec-4476-b34b-10ba55b680f8.webp
+PICTURE (278,2223) 112x63: image-f1108a3c-b93f-4f0d-b9fa-b26a2acb67ef.webp
+BUTTON (429,2265) 164x28: 'Watch now' bg=#7FBF74 radius=19 -> None
+TEXT (259,2339) 506x34:
+      Stay With Me
+      Monologue
+SLIDESHOW (259,2373) 507x280 [crossfade, autoplay]:
+      slide: image-cbf1f18b-b6fd-444e-ac0c-f2ec7aeb1c5c.png caption={'blocks': [{'key': '2aakp', 'text': 'Type image caption here', 'entityRanges': [], 'depth': 0}], 'styles': [{'key': '2aakp', 'type': 'unstyled', 'inlineStyles': {'styles': [{'offset': 0, 'length': 23, 'styles': ['0;0', '1;1', '2;2', '3;3', '4;4']}], 'keys': ['FONT_SIZE', 'FONT_FAMILY', 'FONT_WEIGHT', 'FONT_STYLE', 'COLOR'], 'values': ['10', 'Inter', '400', 'normal', '00000064']}}], 'entityMap': {}, 'blocksMeta': [{'key': '2aakp', 'data': {'lineHeight': 12, 'align': 'align-center', 'sizesLinkedStatus': True, 'paddings': {'left': 37, 'right': 37, 'top': 10, 'bottom': 0}}}]}
+      slide: image-d58b6149-c6a8-4988-8b5c-2b17f78d9c5a.png caption={'blocks': [{'key': 'a4uir', 'text': 'Type image caption here', 'entityRanges': [], 'depth': 0}], 'styles': [{'key': 'a4uir', 'type': 'unstyled', 'inlineStyles': {'styles': [{'offset': 0, 'length': 23, 'styles': ['0;0', '1;1', '2;2', '3;3', '4;4']}], 'keys': ['FONT_SIZE', 'FONT_FAMILY', 'FONT_WEIGHT', 'FONT_STYLE', 'COLOR'], 'values': ['10', 'Inter', '400', 'normal', '00000064']}}], 'entityMap': {}, 'blocksMeta': [{'key': 'a4uir', 'data': {'lineHeight': 12, 'align': 'align-center', 'sizesLinkedStatus': True, 'paddings': {'left': 37, 'right': 37, 'top': 10, 'bottom': 0}}}]}
+      slide: image-36d828bb-9616-4999-8eb6-26e7519bd135.png caption={'blocks': [{'key': 'ea8m8', 'text': 'Type image caption here', 'entityRanges': [], 'depth': 0}], 'styles': [{'key': 'ea8m8', 'type': 'unstyled', 'inlineStyles': {'styles': [{'offset': 0, 'length': 23, 'styles': ['0;0', '1;1', '2;2', '3;3', '4;4']}], 'keys': ['FONT_SIZE', 'FONT_FAMILY', 'FONT_WEIGHT', 'FONT_STYLE', 'COLOR'], 'values': ['10', 'Inter', '400', 'normal', '00000064']}}], 'entityMap': {}, 'blocksMeta': [{'key': 'ea8m8', 'data': {'lineHeight': 12, 'align': 'align-center', 'sizesLinkedStatus': True, 'paddings': {'left': 37, 'right': 37, 'top': 10, 'bottom': 0}}}]}
+SHAPE (260,2373) 507x280: rectangle bg=#000000 z=333
+TEXT (278,2385) 466x112:
+      An exploration of masculinity, identity and the relationship between a father and son. Told from the perspective of the son who delivers a compelling recount of the first conversation he ever had with his dad. 
+      Directed and written by Adedamola Laoye. Zeb did the lighting, sound and editing for the film. The film won first place at the Film at Jesus competition, was selected for the Downing Short Film Festival, Oxford University Short Film Festival and Mono Box Short Film Showcase. 
+BUTTON (429,2545) 164x28: 'Watch now' bg=#7FBF74 radius=19 -> None

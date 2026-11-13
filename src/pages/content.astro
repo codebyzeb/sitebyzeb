@@ -1,0 +1,145 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Slideshow from '../components/Slideshow.astro';
+import VideoEmbed from '../components/VideoEmbed.astro';
+import { Image } from 'astro:assets';
+import {
+  BANNER_SLIDES,
+  CHANNEL_URL,
+  CONTENT_INTRO,
+  PHD_GRIND,
+  VLOGS,
+  VIRAL_TIKTOK,
+} from '../data/content';
+---
+
+<BaseLayout title="Creative Content">
+  <h1 class="page-title reveal">Creative Content</h1>
+
+  <section class="intro reveal">
+    <div class="intro-text">
+      {CONTENT_INTRO.map((p, i) => (
+        <p class="prose">
+          {i === 0 ? (
+            <span>
+              Zeb has been posting &ldquo;content&rdquo; online since he started his YouTube
+              channel <a href={CHANNEL_URL}>FilmByZeb</a> in 2016. Originally posting simple
+              travel vlogs, he used the channel as a place to document his life, learn
+              filmmaking, and experiment creatively. He has since posted over 100 videos,
+              including several award-winning
+              <a href="/shorts/">short films</a>.
+            </span>
+          ) : (
+            p
+          )}
+        </p>
+      ))}
+    </div>
+    <div class="intro-slideshow">
+      <Slideshow slides={BANNER_SLIDES.map((s) => ({ src: s.src, alt: s.caption, caption: s.caption }))} />
+    </div>
+  </section>
+
+  <section class="band band--yellow reveal">
+    <h2 class="section-heading">{PHD_GRIND.heading}</h2>
+    <p class="band-blurb">{PHD_GRIND.blurb}</p>
+    <div class="shorts-row">
+      {PHD_GRIND.videos.map((id) => (
+        <VideoEmbed provider="youtube" id={id} vertical={true} title="The PhD Grind — short" />
+      ))}
+    </div>
+  </section>
+
+  <section class="band band--blue reveal">
+    <h2 class="section-heading">{VLOGS.heading}</h2>
+    <p class="band-blurb">{VLOGS.blurb}</p>
+    <div class="vlogs-row">
+      {VLOGS.videos.map((v) => (
+        <figure class="vlog">
+          <VideoEmbed provider="youtube" id={v.id} title="Reflective vlog" />
+          <figcaption class="caption">{v.caption}</figcaption>
+        </figure>
+      ))}
+    </div>
+  </section>
+
+  <section class="band band--green reveal">
+    <h2 class="section-heading">{VIRAL_TIKTOK.heading}</h2>
+    <p class="band-blurb">{VIRAL_TIKTOK.blurb}</p>
+    <div class="tiktok-row">
+      <VideoEmbed provider="tiktok" id={VIRAL_TIKTOK.tiktokId} title="Viral Wordle TikTok" />
+      <Image
+        class="tiktok-img"
+        src={VIRAL_TIKTOK.image}
+        alt={VIRAL_TIKTOK.imageAlt}
+        widths={[480, 768]}
+        sizes="(max-width: 700px) 90vw, 460px"
+        loading="lazy"
+      />
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .intro {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 2.5rem;
+    max-width: 980px;
+    margin-inline: auto;
+  }
+  .intro-text { flex: 1 1 380px; display: flex; flex-direction: column; gap: 0.9em; text-align: left; }
+  .intro-slideshow { flex: 1 1 380px; }
+
+  .band {
+    border-radius: 2px;
+    padding: clamp(2rem, 5vw, 3.25rem) clamp(1rem, 4vw, 2.5rem);
+    margin: clamp(2.5rem, 6vw, 4rem) 0;
+    text-align: center;
+    overflow: hidden;
+  }
+  .band-blurb {
+    max-width: 30rem;
+    margin: 0.75rem auto 1.75rem;
+    color: var(--ink-soft);
+  }
+  .band--yellow { background: var(--yellow); }
+  .band--blue { background: var(--blue); }
+  .band--blue .band-blurb { color: rgba(34, 34, 34, 0.78); }
+  .band--green { background: var(--green); }
+
+  .shorts-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.25rem;
+  }
+  .shorts-row :global(.embed) {
+    flex: 0 1 220px;
+    box-shadow: 0 10px 22px -12px rgba(34, 34, 34, 0.5);
+  }
+
+  .vlogs-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.5rem;
+  }
+  .vlog { flex: 1 1 300px; max-width: 400px; }
+  .vlog .caption { margin-top: 0.6rem; text-align: center; }
+
+  .tiktok-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 2.5rem;
+  }
+  .tiktok-img {
+    max-width: 460px;
+    width: 100%;
+    border-radius: 2px;
+    box-shadow: 0 14px 28px -14px rgba(34, 34, 34, 0.45);
+  }
+</style>

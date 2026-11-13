@@ -1,0 +1,264 @@
+/*
+ * sitebyzeb.com — design tokens & base styles
+ * Ported from the original ReadyMag project (see readymag-export/).
+ */
+
+@font-face {
+  font-family: 'Coolvetica';
+  src: url('/fonts/coolvetica-rg.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  /* palette (from ReadyMag project) */
+  --bg: #fffcf6;
+  --ink: #222222;
+  --ink-soft: rgba(34, 34, 34, 0.64);
+  --ink-faint: rgba(34, 34, 34, 0.32);
+  --subtle: #8b8b8b;
+
+  --yellow: #f0ef5b;   /* tiles, panels */
+  --yellow-note: #f8ef4c; /* SITE sticker */
+  --gold: #ffdd00;     /* home hero accents */
+  --red: #f0524f;      /* WORK triangle */
+  --blue: #3da5f0;     /* INFO star */
+  --green: #7fbf74;    /* buttons, panels */
+  --brown: #9b6867;    /* research panel */
+
+  /* type scale (original: H1 49/61, H2 37/41, body 12/18, caption 14/18) */
+  --font-display: 'Coolvetica', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  --font-caption: Georgia, 'Times New Roman', serif;
+
+  --size-h1: clamp(2.6rem, 6vw, 4.1rem);   /* "Zeb Goriely" / page titles */
+  --size-h2: clamp(1.9rem, 4vw, 2.9rem);  /* section headings */
+  --size-h3: clamp(1.1rem, 2.2vw, 1.35rem); /* film/client titles */
+  --size-body: clamp(0.95rem, 1.4vw, 1.05rem);
+  --size-small: 0.85rem;
+  --size-caption: clamp(0.85rem, 1.2vw, 0.95rem);
+
+  --line-h1: 1.24;
+  --line-body: 1.5;
+
+  --max-w: 62.5rem; /* 1000px — close to the original 1024px canvas */
+  --max-w-text: 34rem;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-display);
+  font-size: var(--size-body);
+  line-height: var(--line-body);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+img, svg, video { display: block; max-width: 100%; }
+a { color: inherit; }
+
+/* ---------- header ---------- */
+
+.site-header {
+  padding: clamp(1.5rem, 4vw, 2.5rem) 1rem 0;
+  text-align: center;
+}
+
+.site-header .site-title {
+  font-size: var(--size-h1);
+  line-height: var(--line-h1);
+  font-weight: 400;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.site-header .site-title:hover {
+  text-decoration: underline;
+  text-decoration-style: dotted;
+  text-underline-offset: 0.25em;
+}
+
+.nav-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: clamp(1.5rem, 5vw, 3.5rem);
+  padding: clamp(1rem, 3vw, 1.75rem) 0 clamp(0.5rem, 2vw, 1rem);
+}
+
+/* sticker shapes */
+.sticker {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.55em 0.9em;
+  font-size: var(--size-small);
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: transform 0.2s ease;
+}
+.sticker:hover { transform: scale(1.08) rotate(var(--tilt, 0deg)); }
+.sticker.is-active::after {
+  content: '';
+  position: absolute;
+  left: 12%;
+  right: 12%;
+  bottom: -0.45em;
+  border-bottom: 2px dotted currentColor;
+}
+
+.sticker--note {  /* yellow sticky note, tilted */
+  background: var(--yellow-note);
+  transform: rotate(-4deg);
+  --tilt: -4deg;
+  box-shadow: 0 1px 0 rgba(34,34,34,0.15);
+}
+.sticker--triangle { /* red triangle */
+  background: var(--red);
+  color: #fff;
+  clip-path: polygon(50% 0%, 100% 100%, 0% 100%);
+  transform: rotate(3deg);
+  --tilt: 3deg;
+  padding: 1.7em 1.4em 0.6em;
+}
+.sticker--triangle.is-active::after { bottom: 0.3em; }
+.sticker--star { /* blue star */
+  background: var(--blue);
+  clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+  transform: rotate(-8deg);
+  --tilt: -8deg;
+  padding: 1.9em 1.6em 1.6em;
+}
+.sticker--star.is-active::after { bottom: 0.35em; left: 25%; right: 25%; }
+
+/* ---------- layout helpers ---------- */
+
+.page {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: clamp(1rem, 4vw, 2rem) clamp(1rem, 4vw, 2rem) 4rem;
+}
+
+.page-title {
+  font-size: var(--size-h2);
+  text-align: center;
+  font-weight: 400;
+  margin: clamp(1.5rem, 4vw, 3rem) 0 clamp(1rem, 3vw, 2rem);
+}
+
+.section-heading {
+  font-size: var(--size-h2);
+  font-weight: 400;
+  line-height: 1.15;
+}
+
+.text-center { text-align: center; }
+
+.prose {
+  max-width: var(--max-w-text);
+  margin-inline: auto;
+  font-size: var(--size-body);
+  line-height: var(--line-body);
+  color: var(--ink-soft);
+}
+.prose + .prose { margin-top: 1em; }
+.prose a { color: var(--ink); }
+
+.caption {
+  font-family: var(--font-caption);
+  font-style: italic;
+  font-size: var(--size-caption);
+  color: var(--ink-faint);
+  text-align: center;
+  line-height: 1.45;
+}
+
+.subtitle {
+  color: var(--subtle);
+  font-size: var(--size-small);
+  letter-spacing: 0.01em;
+}
+
+/* ---------- pill button (green, like the original) ---------- */
+
+.btn-pill {
+  display: inline-block;
+  background: var(--green);
+  color: #fff;
+  font-family: var(--font-caption);
+  font-style: normal;
+  font-size: var(--size-caption);
+  padding: 0.55em 1.6em;
+  border-radius: 999px;
+  text-decoration: none;
+  border: 0;
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+.btn-pill:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(34, 34, 34, 0.18);
+}
+
+/* ---------- decorative shapes (collage language) ---------- */
+
+.deco {
+  position: absolute;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* ---------- footer ---------- */
+
+.site-footer {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 3rem 1rem 2.5rem;
+  text-align: center;
+}
+.site-footer .footer-wordmarks {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.75em 2em;
+  font-size: var(--size-small);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+.site-footer .footer-wordmarks a { text-decoration: none; }
+.site-footer .footer-wordmarks a:hover { text-decoration: dotted underline; text-underline-offset: 0.3em; }
+.site-footer .footer-star {
+  width: 28px;
+  height: 28px;
+  margin: 1.25rem auto 0.5rem;
+}
+.site-footer .footer-note {
+  font-family: var(--font-caption);
+  font-style: italic;
+  color: var(--ink-faint);
+  font-size: var(--size-small);
+}
+
+/* ---------- motion ---------- */
+
+@media (prefers-reduced-motion: no-preference) {
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  .reveal.is-visible {
+    opacity: 1;
+    transform: none;
+  }
+}

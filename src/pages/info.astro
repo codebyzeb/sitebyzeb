@@ -1,0 +1,151 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { Image } from 'astro:assets';
+import { BIO_LINKS, BIO_PARAGRAPHS } from '../data/info';
+import { CONTACT_EMAIL, SOCIALS } from '../data/site';
+import award from '../assets/info-award.jpg';
+import portrait from '../assets/info-portrait.jpg';
+
+// Inject bio links by matching link text
+function withLinks(p: string): string {
+  let out = p
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;');
+  for (const [text, href] of Object.entries(BIO_LINKS)) {
+    if (out.includes(text)) {
+      out = out.replace(
+        text,
+        `<a href="${href}" target="_blank" rel="noopener">${text}</a>`
+      );
+    }
+  }
+  return out;
+}
+---
+
+<BaseLayout title="Info">
+  <section class="bio reveal">
+    <Image
+      class="bio-photo"
+      src={award}
+      alt="Zeb Goriely holding the Best Micro Short award at the BFI Future Film Festival"
+      widths={[360, 640]}
+      sizes="(max-width: 700px) 90vw, 380px"
+      loading="eager"
+    />
+    <div class="bio-text">
+      {BIO_PARAGRAPHS.map((p) => <p class="prose" set:html={withLinks(p)} />)}
+    </div>
+  </section>
+
+  <section class="contact reveal">
+    <h2 class="section-heading">Contact</h2>
+    <p class="prose">
+      Get in touch at
+      <a class="contact-email" href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>
+    </p>
+  </section>
+
+  <section class="find-me reveal">
+    <p class="find-heading">find me:</p>
+    <div class="socials">
+      <a class="social email" href={`mailto:${CONTACT_EMAIL}`}>email</a>
+      {SOCIALS.map((s) => (
+        <a
+          class="social"
+          href={s.href}
+          target="_blank"
+          rel="noopener"
+          style={`--c: ${s.color}`}
+        >
+          {s.label.toLowerCase()}
+        </a>
+      ))}
+    </div>
+    <figure class="portrait-wrap">
+      <Image
+        class="portrait"
+        src={portrait}
+        alt="Casual portrait of Zeb Goriely"
+        widths={[120, 240]}
+        sizes="76px"
+        loading="lazy"
+      />
+      <figcaption class="caption">you found me!</figcaption>
+    </figure>
+  </section>
+</BaseLayout>
+
+<style>
+  .bio {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: 2.25rem;
+    max-width: 920px;
+    margin: clamp(2rem, 6vw, 3rem) auto 0;
+  }
+  .bio-photo {
+    flex: 0 1 340px;
+    border-radius: 2px;
+    box-shadow: 0 14px 28px -14px rgba(34, 34, 34, 0.4);
+  }
+  .bio-text {
+    flex: 1 1 340px;
+    display: flex;
+    flex-direction: column;
+    gap: 0.9em;
+    text-align: left;
+  }
+
+  .contact {
+    text-align: center;
+    margin: clamp(3rem, 8vw, 4.5rem) auto;
+  }
+  .contact-email {
+    font-size: 1.15em;
+    text-decoration: underline;
+    text-decoration-style: dotted;
+    text-underline-offset: 0.3em;
+  }
+
+  .find-me { text-align: center; }
+  .find-heading { margin-bottom: 1.25rem; }
+  .socials {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+  }
+  .social {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 92px;
+    padding: 1.15em 1.4em;
+    border-radius: 999px;
+    background: var(--c, var(--yellow));
+    color: var(--ink);
+    text-decoration: none;
+    font-size: var(--size-small);
+    border: 2px solid var(--ink);
+    transition: transform 0.15s ease;
+  }
+  .social:hover { transform: translateY(-3px) rotate(-2deg); }
+  .social.email { --c: var(--blue); color: #fff; border-radius: 8px; }
+  /* label colors chosen so text stays legible on each sticker */
+  .social[style*='f0524f'] { color: #fff; } /* youtube red */
+  .social[style*='9b6867'] { color: #fff; } /* tiktok brown */
+  .social[style*='7fbf74'] { color: #fff; } /* linkedin green */
+
+  .portrait-wrap { margin: 2.5rem auto 0; width: max-content; }
+  .portrait {
+    width: 76px;
+    height: 76px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-inline: auto;
+  }
+  .portrait-wrap .caption { margin-top: 0.5rem; }
+</style>

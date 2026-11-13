@@ -1,0 +1,92 @@
+# research — content sheet
+
+BACKGROUND: #fffcf6
+SHAPE (-23,170) 1071x400: rectangle bg=#9B6867 z=303
+PICTURE (238,190) 244x360: image-977a6d67-269b-4c83-8c99-2afecaf2ed9b.png
+TEXT (536,190) 248x40:
+      Research
+TEXT (536,240) 277x288:
+      Zeb studied for a Ph.D. in Computer Science at the University of Cambridge from 2021 to 2025. He was supervised by Professor Paula Buttery and funded by the EPSRC Vice-Chancellor Scholarship.
+      His thesis, titled "Phonological Representations in Language Models", explores the training of small language models with sound-based units (phonemes) instead of text-based units (characters or words). This work draws parallels between modern machine learning methods and statistical learning theories of language acquisition, leading to new insights across both fields.
+      He was a Research Scientist Intern at Spotify in 2026, studying large-scale entity resolution and LLM-based methods for augmenting labelled data.
+TEXT (258,581) 507x16:
+      Research Themes
+BUTTON (258,626) 194x34: 'Entity Resolution' bg=#F0524F radius=64 -> None
+BUTTON (572,626) 194x34: 'Word Segmentation' bg=#F0524F radius=64 -> None
+BUTTON (258,671) 194x34: 'Child Language Aquisition' bg=#F0524F radius=64 -> None
+BUTTON (572,671) 194x34: 'Large Language Models' bg=#F0524F radius=64 -> None
+BUTTON (258,716) 194x34: 'Tokenisation' bg=#F0524F radius=64 -> None
+BUTTON (571,716) 194x34: 'Curriculum Learning' bg=#F0524F radius=64 -> None
+TEXT (258,789) 506x16:
+      Papers
+PICTURE (258,830) 157x240: ?
+PICTURE (432,830) 157x240: ?
+PICTURE (609,830) 157x240: ?
+TEXT (264,888) 144x112:
+      CLIMB: Curriculum Learning for Infant-inspired Model Building [https://aclanthology.org/2023.conll-babylm.10/]
+      Proceedings of the BabyLM Challenge [https://aclanthology.org/2023.conll-babylm.10/]
+      2023
+TEXT (438,888) 144x144:
+      Word segmentation from transcriptions of child-directed speech using lexical and sub-lexical cues. [https://www.cambridge.org/core/journals/journal-of-child-language/article/word-segmentation-from-transcriptions-of-childdirected-speech-using-lexical-and-sublexical-cues/5D206536C878ADA80026ED8E2E72F848]
+      Journal of Child Language [https://www.cambridge.org/core/journals/journal-of-child-language/article/word-segmentation-from-transcriptions-of-childdirected-speech-using-lexical-and-sublexical-cues/5D206536C878ADA80026ED8E2E72F848]
+      2024
+TEXT (615,888) 144x128:
+      Mitigating Frequency Bias and Anisotropy in Language Model Pre-Training with Syntactic Smoothing [https://aclanthology.org/2024.emnlp-main.344/]
+      Proceedings of EMNLP 2024 [https://www.cambridge.org/core/journals/journal-of-child-language/article/word-segmentation-from-transcriptions-of-childdirected-speech-using-lexical-and-sublexical-cues/5D206536C878ADA80026ED8E2E72F848]
+PICTURE (258,1090) 157x240: ?
+PICTURE (432,1090) 157x240: ?
+PICTURE (609,1090) 157x240: ?
+TEXT (264,1148) 144x112:
+      From Babble to Words: Pre-Training Language Models on Continuous Streams of Phonemes [https://aclanthology.org/2024.conll-babylm.4/]
+      Proceedings of BabyLM [https://www.cambridge.org/core/journals/journal-of-child-language/article/word-segmentation-from-transcriptions-of-childdirected-speech-using-lexical-and-sublexical-cues/5D206536C878ADA80026ED8E2E72F848]
+      2025
+TEXT (438,1148) 144x128:
+      IPA CHILDES & G2P+: Feature-Rich Resources for Cross-Lingual Phonology and Phonemic Language Modeling [https://aclanthology.org/2025.conll-1.33/]
+      Proceedings of CoNLL [https://www.cambridge.org/core/journals/journal-of-child-language/article/word-segmentation-from-transcriptions-of-childdirected-speech-using-lexical-and-sublexical-cues/5D206536C878ADA80026ED8E2E72F848]
+      2025
+TEXT (615,1148) 144x96:
+      BabyLM’s First Words: Word Segmentation as a Phonological Probing Task [https://aclanthology.org/2025.conll-1.34/]
+      Proceedings of CoNLL [https://www.cambridge.org/core/journals/journal-of-child-language/article/word-segmentation-from-transcriptions-of-childdirected-speech-using-lexical-and-sublexical-cues/5D206536C878ADA80026ED8E2E72F848]
+      2025
+PICTURE (258,1350) 157x240: ?
+PICTURE (432,1350) 157x240: ?
+TEXT (264,1408) 144x96:
+      ByteSpan: Information-Driven Subword Tokenisation [https://arxiv.org/abs/2506.18639]
+      Proceedings of TokShop [https://www.cambridge.org/core/journals/journal-of-child-language/article/word-segmentation-from-transcriptions-of-childdirected-speech-using-lexical-and-sublexical-cues/5D206536C878ADA80026ED8E2E72F848]
+      2025
+TEXT (438,1408) 144x80:
+      What’s the Best Sequence Length for BabyLM? [https://arxiv.org/abs/2506.18639]
+      Accepted to BabyLM
+      2026
+TEXT (258,1650) 507x214:
+      Teaching
+      Zeb supervised various undergraduate Computer Science courses, including:
+      Machine Learning and Real-World Data
+      Computation Theory
+      Semantics of Programming Languages
+      Formal Models of Language
+      His teaching also included demonstrating for the Machine Learning course and being a Teaching Assistant for the Formal Models of Language course. He also supervised Part II and MPhil projects.
+TEXT (258,1900) 507x16:
+      Presentations
+PICTURE (258,1941) 204x129: ?
+PICTURE (561,1941) 204x129: ?
+TEXT (267,1964) 185x96:
+      CLIMB: Curriculum Learning for Infant-inspired Model Building
+      Oral Presentation,
+BabyLM Workshop, [https://www.cambridge.org/core/journals/journal-of-child-language/article/word-segmentation-from-transcriptions-of-childdirected-speech-using-lexical-and-sublexical-cues/5D206536C878ADA80026ED8E2E72F848]
+      EMNLP 2023
+TEXT (570,1964) 185x96:
+      What Can AI Teach Us About How Children Acquire Language? 
+      Oral Presentation,
+Gonville & Caius College,
+March 2024 [https://www.cambridge.org/core/journals/journal-of-child-language/article/word-segmentation-from-transcriptions-of-childdirected-speech-using-lexical-and-sublexical-cues/5D206536C878ADA80026ED8E2E72F848]
+PICTURE (258,2081) 204x129: ?
+PICTURE (561,2081) 204x129: ?
+TEXT (267,2104) 185x96:
+      POS-Smooth: Rare Word Representation Learning by Smoothing Over Word Classes 
+      Poster Presentation, [https://www.cambridge.org/core/journals/journal-of-child-language/article/word-segmentation-from-transcriptions-of-childdirected-speech-using-lexical-and-sublexical-cues/5D206536C878ADA80026ED8E2E72F848]
+      HumanClaim 2024
+TEXT (570,2104) 185x96:
+      Word Segmentation and Lexicon Learning from Child-Directed Speech Using Multiple Cues 
+      Poster Presentation, [https://www.cambridge.org/core/journals/journal-of-child-language/article/word-segmentation-from-transcriptions-of-childdirected-speech-using-lexical-and-sublexical-cues/5D206536C878ADA80026ED8E2E72F848]
+      HumanClaim 2023

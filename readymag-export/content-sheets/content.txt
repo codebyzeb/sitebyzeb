@@ -1,0 +1,57 @@
+# content — content sheet
+
+BACKGROUND: #fffcf6
+TEXT (0,0) 0x0:
+      CREATIVE CONTENT
+TEXT (326,8) 371x61:
+      Zeb Goriely
+TEXT (221,221) 579x38:
+      Creative Content
+SLIDESHOW (537,281) 445x299 [crossfade, autoplay]:
+      slide: image-ef85b9f1-00bb-4efa-b989-8b5c4e02ab22.jpg caption={'blocks': [{'key': '2u2bc', 'text': 'FilmByZeb YouTube banner from 2017 to 2020', 'entityRanges': [], 'depth': 0}], 'styles': [{'key': '2u2bc', 'type': 'unstyled', 'inlineStyles': {'styles': [], 'keys': [], 'values': []}}], 'entityMap': {}, 'blocksMeta': [{'key': '2u2bc', 'data': {'sizesLinkedStatus': True, 'paddings': {'top': 0}, 'textStyle': 'style-f4ef3312-fdb8-46fb-9c48-bd3dadc9671f'}}]}
+      slide: image-05c77d1e-516f-49e6-82da-13991c9cf98c.png caption={'blocks': [{'key': 'qgjl', 'text': 'Origin of "FilmByZeb" in a vlog title screen (2017)', 'entityRanges': [], 'depth': 0}], 'styles': [{'key': 'qgjl', 'type': 'unstyled', 'inlineStyles': {'styles': [], 'keys': [], 'values': []}}], 'entityMap': {}, 'blocksMeta': [{'key': 'qgjl', 'data': {'lineHeight': 18, 'sizesLinkedStatus': True, 'textStyle': 'style-f4ef3312-fdb8-46fb-9c48-bd3dadc9671f', 'paddings': {'left': 37, 'right': 37, 'top': 0, 'bottom': 0}}}]}
+      slide: image-bfb6e07b-36d4-4dd3-a0ac-dda4ffb51269.png caption={'blocks': [{'key': '758f9', 'text': '100 subscriber end screen message (2018)', 'entityRanges': [], 'depth': 0}], 'styles': [{'key': '758f9', 'type': 'unstyled', 'inlineStyles': {'styles': [], 'keys': [], 'values': []}}], 'entityMap': {}, 'blocksMeta': [{'key': '758f9', 'data': {'lineHeight': 18, 'sizesLinkedStatus': True, 'textStyle': 'style-f4ef3312-fdb8-46fb-9c48-bd3dadc9671f', 'paddings': {'left': 37, 'right': 37, 'top': 0, 'bottom': 11}}}]}
+      slide: image-1b9e41f1-44f0-4c45-8ca5-eea847ca5479.png caption={'blocks': [{'key': '7ki62', 'text': 'Hand-drawn end card used in several early videos (2018)', 'entityRanges': [], 'depth': 0}], 'styles': [{'key': '7ki62', 'type': 'unstyled', 'inlineStyles': {'styles': [], 'keys': [], 'values': []}}], 'entityMap': {}, 'blocksMeta': [{'key': '7ki62', 'data': {'lineHeight': 18, 'sizesLinkedStatus': True, 'textStyle': 'style-f4ef3312-fdb8-46fb-9c48-bd3dadc9671f', 'paddings': {'left': 37, 'right': 37, 'top': 0, 'bottom': 0}}}]}
+      slide: image-963a9cdf-e6e0-44cf-9ce2-475078750fb4.png caption={'blocks': [{'key': '9ul80', 'text': 'Animated "FilmByZeb" title used in the VEDS series (2019)', 'entityRanges': [], 'depth': 0}], 'styles': [{'key': '9ul80', 'type': 'unstyled', 'inlineStyles': {'styles': [], 'keys': [], 'values': []}}], 'entityMap': {}, 'blocksMeta': [{'key': '9ul80', 'data': {'lineHeight': 18, 'sizesLinkedStatus': True, 'textStyle': 'style-f4ef3312-fdb8-46fb-9c48-bd3dadc9671f', 'paddings': {'left': 37, 'right': 37, 'top': 0, 'bottom': 0}}}]}
+      slide: image-4384cb75-5f88-4262-a146-9a6941f7f1a2.png caption={'blocks': [{'key': 'j194', 'text': '"The Cambridge Vlog" title screen (2021)', 'entityRanges': [], 'depth': 0}], 'styles': [{'key': 'j194', 'type': 'unstyled', 'inlineStyles': {'styles': [], 'keys': [], 'values': []}}], 'entityMap': {}, 'blocksMeta': [{'key': 'j194', 'data': {'lineHeight': 18, 'sizesLinkedStatus': True, 'textStyle': 'style-f4ef3312-fdb8-46fb-9c48-bd3dadc9671f', 'paddings': {'left': 37, 'right': 37, 'top': 0, 'bottom': 0}}}]}
+      slide: image-576034dd-594c-4818-acfa-5283ab5738a4.png caption={'blocks': [{'key': 'cj136', 'text': 'Succession parody "FilmByZeb" title (2023)', 'entityRanges': [], 'depth': 0}], 'styles': [{'key': 'cj136', 'type': 'unstyled', 'inlineStyles': {'styles': [], 'keys': [], 'values': []}}], 'entityMap': {}, 'blocksMeta': [{'key': 'cj136', 'data': {'lineHeight': 18, 'sizesLinkedStatus': True, 'textStyle': 'style-f4ef3312-fdb8-46fb-9c48-bd3dadc9671f', 'paddings': {'left': 37, 'right': 37, 'top': 0, 'bottom': 0}}}]}
+TEXT (41,320) 440x216:
+      Zeb has been posting "content" online since he started his YouTube channel FilmByZeb in 2016. Originally posting simple travel vlogs, he used the channel as a place to document his life, learn filmmaking, and experiment creatively. He has since posted over 100 videos, including several award-winning short films. [youtube.com/filmbyzeb] [/shorts/]
+      Zeb also produces short-form content across multiple platforms. He uses these videos to test creative ideas and methods for storytelling. In 2022, his TikTok on Wordle went viral, reaching over one million views.
+      His recent short-form series The PhD Grind documented the final year of his PhD using comedy, experimental editing, and animated characters. He is currently in pre-production for a new series about creativity.
+TEXT (558,435) 188x13:
+      YouTube banner used from 2017 to 2020.
+SHAPE (-23,653) 1072x499: rectangle bg=#F0EF5B z=318
+TEXT (390,671) 243x41:
+      The PhD Grind
+TEXT (329,716) 352x36:
+      Playful and experimental short-form videos posted across YouTube, TikTok, and Instagram documenting the final year of Zeb's PhD.
+SHAPE (925,721) 159x121: polygon bg=#F0524F z=332
+VIDEO (49,784) 176x304: https://youtube.com/shorts/GFyjRkshvRY?feature=share
+VIDEO (305,784) 176x304: https://youtube.com/shorts/UeFyxqvz_ic?feature=share
+VIDEO (561,784) 176x304: https://youtube.com/shorts/qE-O8rysuG8?feature=share
+VIDEO (817,784) 176x304: https://youtube.com/shorts/aCv01HggR2o?feature=share
+SHAPE (-23,1152) 1072x408: rectangle bg=#3DA5F0 z=302
+TEXT (361,1161) 302x41:
+      Reflective Vlogs
+SHAPE (-47,1192) 215x195: icon bg=#7FBF74 z=315
+TEXT (337,1216) 350x36:
+      Many of Zeb's videos are deeply personal, using the video format as a way to process his thoughts, document his life, and reflect.
+VIDEO (41,1280) 256x168: https://www.youtube.com/watch?v=f82vkuaH1Hg
+VIDEO (361,1280) 256x168: https://youtu.be/ZsrFI1qcRj8
+VIDEO (681,1280) 256x168: https://youtu.be/FHpXMdlzxGk
+TEXT (41,1464) 256x18:
+      A letter to Zeb age 25, from Zeb age 21.
+TEXT (361,1464) 256x36:
+      Most recent video: Zeb reflects on his PhD
+and considers his new life in London.
+TEXT (681,1464) 256x36:
+      Zeb considers whether the goal should be to make his future self proud.
+SHAPE (-23,1560) 1072x528: rectangle bg=#7FBF74 z=301
+TEXT (360,1568) 304x41:
+      Viral TikTok
+TEXT (337,1624) 350x36:
+      In 2022, Zeb's TikTok about Wordle went viral
+and received some media attention.
+IFRAME (249,1665) 168x367: https://www.tiktok.com/@tokbyzeb/video/7058690677634256134
+PICTURE (505,1684) 320x308: image-57b24d39-d166-4185-9039-241fe28593d4.png

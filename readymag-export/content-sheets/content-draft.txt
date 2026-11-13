@@ -1,0 +1,46 @@
+# content-draft — content sheet
+
+BACKGROUND: #fffcf6
+TEXT (221,221) 579x38:
+      CREATIVE CONTENT
+SLIDESHOW (537,281) 445x299 [crossfade, autoplay]:
+      slide: image-ef85b9f1-00bb-4efa-b989-8b5c4e02ab22.jpg caption={'blocks': [{'key': '2u2bc', 'text': 'FilmByZeb YouTube banner from 2017 to 2020', 'entityRanges': [], 'depth': 0}], 'styles': [{'key': '2u2bc', 'type': 'unstyled', 'inlineStyles': {'styles': [], 'keys': [], 'values': []}}], 'entityMap': {}, 'blocksMeta': [{'key': '2u2bc', 'data': {'sizesLinkedStatus': True, 'paddings': {'top': 0}, 'textStyle': 'style-f4ef3312-fdb8-46fb-9c48-bd3dadc9671f'}}]}
+      slide: image-05c77d1e-516f-49e6-82da-13991c9cf98c.png caption={'blocks': [{'key': 'qgjl', 'text': 'Origin of "FilmByZeb" in a vlog title screen (2017)', 'entityRanges': [], 'depth': 0}], 'styles': [{'key': 'qgjl', 'type': 'unstyled', 'inlineStyles': {'styles': [], 'keys': [], 'values': []}}], 'entityMap': {}, 'blocksMeta': [{'key': 'qgjl', 'data': {'lineHeight': 18, 'sizesLinkedStatus': True, 'textStyle': 'style-f4ef3312-fdb8-46fb-9c48-bd3dadc9671f', 'paddings': {'left': 37, 'right': 37, 'top': 0, 'bottom': 0}}}]}
+      slide: image-bfb6e07b-36d4-4dd3-a0ac-dda4ffb51269.png caption={'blocks': [{'key': '758f9', 'text': '100 subscriber end screen message (2018)', 'entityRanges': [], 'depth': 0}], 'styles': [{'key': '758f9', 'type': 'unstyled', 'inlineStyles': {'styles': [], 'keys': [], 'values': []}}], 'entityMap': {}, 'blocksMeta': [{'key': '758f9', 'data': {'lineHeight': 18, 'sizesLinkedStatus': True, 'textStyle': 'style-f4ef3312-fdb8-46fb-9c48-bd3dadc9671f', 'paddings': {'left': 37, 'right': 37, 'top': 0, 'bottom': 11}}}]}
+      slide: image-1b9e41f1-44f0-4c45-8ca5-eea847ca5479.png caption={'blocks': [{'key': '7ki62', 'text': 'Hand-drawn end card used in several early videos (2018)', 'entityRanges': [], 'depth': 0}], 'styles': [{'key': '7ki62', 'type': 'unstyled', 'inlineStyles': {'styles': [], 'keys': [], 'values': []}}], 'entityMap': {}, 'blocksMeta': [{'key': '7ki62', 'data': {'lineHeight': 18, 'sizesLinkedStatus': True, 'textStyle': 'style-f4ef3312-fdb8-46fb-9c48-bd3dadc9671f', 'paddings': {'left': 37, 'right': 37, 'top': 0, 'bottom': 0}}}]}
+      slide: image-963a9cdf-e6e0-44cf-9ce2-475078750fb4.png caption={'blocks': [{'key': '9ul80', 'text': 'Animated "FilmByZeb" title used in the VEDS series (2019)', 'entityRanges': [], 'depth': 0}], 'styles': [{'key': '9ul80', 'type': 'unstyled', 'inlineStyles': {'styles': [], 'keys': [], 'values': []}}], 'entityMap': {}, 'blocksMeta': [{'key': '9ul80', 'data': {'lineHeight': 18, 'sizesLinkedStatus': True, 'textStyle': 'style-f4ef3312-fdb8-46fb-9c48-bd3dadc9671f', 'paddings': {'left': 37, 'right': 37, 'top': 0, 'bottom': 0}}}]}
+      slide: image-4384cb75-5f88-4262-a146-9a6941f7f1a2.png caption={'blocks': [{'key': 'j194', 'text': '"The Cambridge Vlog" title screen (2021)', 'entityRanges': [], 'depth': 0}], 'styles': [{'key': 'j194', 'type': 'unstyled', 'inlineStyles': {'styles': [], 'keys': [], 'values': []}}], 'entityMap': {}, 'blocksMeta': [{'key': 'j194', 'data': {'lineHeight': 18, 'sizesLinkedStatus': True, 'textStyle': 'style-f4ef3312-fdb8-46fb-9c48-bd3dadc9671f', 'paddings': {'left': 37, 'right': 37, 'top': 0, 'bottom': 0}}}]}
+      slide: image-576034dd-594c-4818-acfa-5283ab5738a4.png caption={'blocks': [{'key': 'cj136', 'text': 'Succession parody "FilmByZeb" title (2023)', 'entityRanges': [], 'depth': 0}], 'styles': [{'key': 'cj136', 'type': 'unstyled', 'inlineStyles': {'styles': [], 'keys': [], 'values': []}}], 'entityMap': {}, 'blocksMeta': [{'key': 'cj136', 'data': {'lineHeight': 18, 'sizesLinkedStatus': True, 'textStyle': 'style-f4ef3312-fdb8-46fb-9c48-bd3dadc9671f', 'paddings': {'left': 37, 'right': 37, 'top': 0, 'bottom': 0}}}]}
+TEXT (44,323) 430x216:
+      Zeb has been posting "content" online since he started his YouTube channel FilmByZeb in 2016. Originally posting simple travel vlogs, he used the channel as a place to document his life, learn filmmaking, and experiment creatively. He has since posted over 100 videos, including several award-winning short films. [youtube.com/filmbyzeb] [/shorts/]
+      Zeb also produces short-form content across multiple platforms. He uses these videos to test creative ideas and methods for storytelling. In 2022, his TikTok on Wordle went viral, reaching over one million views.
+      His recent short-form series The PhD Grind documented the final year of his PhD using comedy, experimental editing, and animated characters. He is currently in pre-production for a new series about creativity.
+TEXT (558,435) 188x13:
+      YouTube banner used from 2017 to 2020.
+SHAPE (694,782) 52x52: ellipse bg=#F0EF5B z=315
+TEXT (269,796) 480x51:
+      WORK IN PROGRESS
+TEXT (272,798) 480x45:
+      Through the Years
+SHAPE (338,843) 344x10: rectangle bg=#3DA5F0 z=314
+SHAPE (-23,882) 1072x384: rectangle bg=#F0EF5B z=320
+TEXT (401,901) 222x45:
+      2017
+TEXT (329,946) 352x36:
+      Zeb begins experimenting with visual editing techniques through short silent videos such as "Rainy Day".
+PICTURE (105,1015) 209x118: image-c1319e5f-b03c-4ff5-b75e-1d200941a733.png
+SHAPE (-23,1266) 1072x469: rectangle bg=#3DA5F0 z=301
+TEXT (401,1275) 222x45:
+      2016
+SHAPE (13,1320) 215x195: icon bg=#7FBF74 z=317
+TEXT (338,1330) 350x72:
+      Zeb posts his first YouTube video, a simple montage of a family hiking trip. Inspired by Casey Neistat and Sara Dietschy, he edits five vlogs from a later trip to New York. Teaching himself to edit, it takes him seven months to make these five videos.
+VIDEO (105,1427) 328x184: https://www.youtube.com/watch?v=IQTyo53zGBQ
+PICTURE (593,1427) 184x88: image-e0dc6e30-cb7f-467e-9c0a-509f35a6a1ad.png
+PICTURE (785,1427) 176x88: image-b4c2c28b-85ac-43eb-bf47-c3f4a48dbb21.png
+PICTURE (593,1523) 184x88: image-b9c165ce-1e95-4730-840c-082d484eb2ec.png
+PICTURE (785,1523) 176x88: image-404d03a4-e705-49a3-8d36-0320588af720.png
+TEXT (593,1617) 272x18:
+      Stills from the "New York" series (2016 — 2017)
+TEXT (105,1619) 217x18:
+      "King's Trail - Hiking Montage" (2016)

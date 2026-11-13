@@ -1,0 +1,119 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { Image } from 'astro:assets';
+import shortFilms from '../assets/work-short-films.jpg';
+import freelance from '../assets/work-freelance.png';
+import creative from '../assets/work-creative.jpg';
+import research from '../assets/work-research.jpg';
+
+const cards = [
+  { label: 'short films', href: '/shorts/', img: shortFilms },
+  { label: 'freelance', href: '/freelance/', img: freelance },
+  { label: 'creative\ncontent', href: '/content/', img: creative },
+  { label: 'research', href: '/research/', img: research },
+];
+
+const comingSoon = [
+  { label: 'watersprite\nfilm festival' },
+  { label: 'photography' },
+];
+---
+
+<BaseLayout title="Work">
+  <h1 class="page-title reveal">Work</h1>
+
+  <div class="grid">
+    {cards.map((c) => (
+      <a class="tile reveal" href={c.href}>
+        <span class="tile-label">{c.label}</span>
+        <Image
+          class="tile-img"
+          src={c.img}
+          alt=""
+          widths={[400, 720, 1000]}
+          sizes="(max-width: 760px) 92vw, 480px"
+          loading="lazy"
+        />
+        <span class="tile-dot" aria-hidden="true"></span>
+      </a>
+    ))}
+    {comingSoon.map((c) => (
+      <div class="tile tile--soon reveal" aria-label={`${c.label.replace('\n', ' ')} — coming soon`}>
+        <span class="tile-label">
+          {c.label}<br /><small>coming soon</small>
+        </span>
+      </div>
+    ))}
+  </div>
+</BaseLayout>
+
+<style>
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.25rem;
+    max-width: 880px;
+    margin-inline: auto;
+  }
+  @media (max-width: 640px) {
+    .grid { grid-template-columns: 1fr; }
+  }
+  .tile {
+    position: relative;
+    aspect-ratio: 1.9 / 1;
+    display: grid;
+    place-items: center;
+    background: var(--yellow);
+    text-decoration: none;
+    overflow: hidden;
+    border-radius: 2px;
+    transition: transform 0.2s ease;
+  }
+  .tile:hover { transform: translateY(-3px); }
+  .tile-label {
+    position: relative;
+    z-index: 2;
+    font-size: clamp(1.5rem, 3.4vw, 2.1rem);
+    line-height: 1.05;
+    text-align: center;
+    white-space: pre-line;
+    transition: opacity 0.3s ease;
+  }
+  .tile-label small {
+    display: block;
+    margin-top: 0.35em;
+    font-size: 0.45em;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+  }
+  .tile-img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 0.35s ease;
+    z-index: 1;
+  }
+  .tile:hover .tile-img,
+  .tile:focus-visible .tile-img { opacity: 1; }
+  .tile:hover .tile-label { color: #fff; text-shadow: 0 1px 8px rgba(0,0,0,0.4); }
+  /* on touch there is no hover: show the image always */
+  @media (hover: none) {
+    .tile-img { opacity: 1; }
+    .tile-label { color: #fff; text-shadow: 0 1px 8px rgba(0,0,0,0.4); }
+  }
+  .tile--soon { cursor: default; }
+  .tile-dot {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background: var(--red);
+    z-index: 3;
+  }
+</style>

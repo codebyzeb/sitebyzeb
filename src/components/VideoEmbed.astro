@@ -1,0 +1,155 @@
+---
+/*
+ * VideoEmbed — faithful + performant video embeds.
+ *
+ * - youtube / vimeo: click-to-load facade (poster + play button), so no
+ *   third-party JS loads until the visitor presses play.
+ * - vertical YouTube Shorts render at 9/16.
+ * - tiktok: lazy iframe (official embed).
+ */
+interface Props {
+  provider: 'youtube' | 'vimeo' | 'tiktok';
+  id: string; // video id (yt / vimeo / tiktok numeric id)
+  title?: string;
+  vertical?: boolean; // 9:16 YouTube Shorts
+}
+
+const { provider, id, title = 'Video', vertical = false } = Astro.props;
+
+const embedUrl =
+  provider === 'youtube'
+    ? `https://www.youtube-nocookie.com/embed/${id}?autoplay=1&rel=0`
+    : provider === 'vimeo'
+      ? `https://player.vimeo.com/video/${id}?autoplay=1`
+      : `https://www.tiktok.com/embed/v2/${id}`;
+
+const poster =
+  provider === 'youtube'
+    ? `https://i.ytimg.com/vi/${id}/hqdefault.jpg`
+    : provider === 'vimeo'
+      ? undefined // vimeo posters passed via slot
+      : undefined;
+---
+
+{provider === 'tiktok' ? (
+  <div class="embed embed--tiktok" data-embed-url={embedUrl}>
+    <div class="embed-loading" />
+  </div>
+) : (
+  <div
+    class:list={['embed', 'embed--facade', { 'is-vertical': vertical }]}
+    data-embed-url={embedUrl}
+    role="button"
+    tabindex="0"
+    aria-label={`Play ${title}`}
+  >
+    {provider === 'vimeo' ? (
+      <slot name="poster" />
+    ) : (
+      <img class="embed-poster" src={poster} alt="" loading="lazy" />
+    )}
+    <span class="play" aria-hidden="true">▶</span>
+  </div>
+)}
+
+<style>
+  .embed {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    border-radius: 2px;
+    overflow: hidden;
+    background: #1a1a1a;
+    box-shadow: 0 14px 28px -14px rgba(34, 34, 34, 0.45);
+  }
+  .embed.is-vertical { aspect-ratio: 9 / 16; max-width: 320px; }
+  .embed :global(iframe) {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+  }
+  .embed--facade { cursor: pointer; }
+  .embed--facade:hover .play,
+  .embed--facade:focus-visible .play { transform: scale(1.12); }
+  .embed-poster {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .play {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
+    display: grid;
+    place-items: center;
+    width: 3em;
+    height: 3em;
+    border-radius: 50%;
+    background: #fff;
+    color: #111;
+    font-size: 0.9em;
+    padding-left: 0.12em;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35);
+    transition: transform 0.15s ease;
+  }
+  .embed--tiktok {
+    background: transparent;
+    box-shadow: none;
+    aspect-ratio: 9 / 16;
+    max-width: 340px;
+    margin-inline: auto;
+  }
+</style>
+
+<script>
+  // Click-to-load facades + lazy tiktok iframes
+  const facades = document.querySelectorAll<HTMLElement>('.embed--facade');
+  for (const f of facades) {
+    const activate = () => {
+      if (f.dataset.loaded) return;
+      f.dataset.loaded = '1';
+      const iframe = document.createElement('iframe');
+      iframe.src = f.dataset.embedUrl ?? '';
+      iframe.title = 'Embedded video';
+      iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+      iframe.allowFullscreen = true;
+      f.innerHTML = '';
+      f.appendChild(iframe);
+    };
+    f.addEventListener('click', activate);
+    f.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        activate();
+      }
+    });
+  }
+
+  const tiktoks = document.querySelectorAll<HTMLElement>('.embed--tiktok');
+  if (tiktoks.length && 'IntersectionObserver' in window) {
+    const io = new IntersectionObserver(
+      (entries) => {
+        for (const en of entries) {
+          if (en.isIntersecting) {
+            const el = en.target as HTMLElement;
+            const iframe = document.createElement('iframe');
+            iframe.src = el.dataset.embedUrl ?? '';
+            iframe.title = 'TikTok video';
+            iframe.allow = 'encrypted-media; picture-in-picture';
+            iframe.allowFullscreen = true;
+            el.innerHTML = '';
+            el.appendChild(iframe);
+            io.unobserve(el);
+          }
+        }
+      },
+      { rootMargin: '200px' }
+    );
+    tiktoks.forEach((t) => io.observe(t));
+  }
+</script>
