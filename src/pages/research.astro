@@ -17,7 +17,7 @@ import paperPortrait from '../assets/research-paper-portrait.svg';
     <Image
       class="portrait"
       src={RESEARCH_PORTRAIT}
-      alt="Portrait of Zeb Goriely"
+      alt="PhD thesis title page: Phonological Representations in Language Models"
       widths={[320, 480]}
       sizes="(max-width: 700px) 80vw, 280px"
       loading="eager"
@@ -92,13 +92,18 @@ import paperPortrait from '../assets/research-paper-portrait.svg';
   .portrait {
     width: 200px;
     flex: 0 0 auto;
+    aspect-ratio: 1688 / 2390; /* hard-lock the portrait's true aspect */
+    object-fit: cover;
     border-radius: 2px;
     box-shadow: 0 14px 28px -12px rgba(34, 34, 34, 0.4);
   }
   .hero-copy { flex: 1 1 300px; color: #fff; }
+  @media (max-width: 640px) {
+    .portrait { margin-inline: auto; } /* center the thesis scan on phones */
+  }
   .hero-copy .section-heading { color: #fff; margin-bottom: 1rem; }
   .bio { display: flex; flex-direction: column; gap: 0.8em; }
-  .bio-p { color: rgba(255, 255, 255, 0.88); }
+  .bio-p { color: rgba(255, 255, 255, 0.95); }
 
   .list-heading {
     font-size: var(--size-h3);
