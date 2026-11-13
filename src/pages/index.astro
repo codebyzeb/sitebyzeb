@@ -1,0 +1,59 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import VideoEmbed from '../components/VideoEmbed.astro';
+import poster from '../assets/home-video-poster.png';
+---
+
+<BaseLayout title="SiteByZeb">
+  <section class="hero">
+    <div class="hero-video reveal">
+      <div class="deco deco--circle" aria-hidden="true"></div>
+      <div class="deco deco--flag" aria-hidden="true"></div>
+      <div class="deco deco--para" aria-hidden="true"></div>
+      <VideoEmbed provider="vimeo" id="1226923169" title="Zeb Goriely — showreel">
+        <img slot="poster" class="embed-poster" src={poster.src} alt="" />
+      </VideoEmbed>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .hero {
+    position: relative;
+    padding: clamp(2rem, 6vw, 4rem) 0 clamp(3rem, 8vw, 5rem);
+  }
+  .hero-video {
+    position: relative;
+    max-width: 640px;
+    margin-inline: auto;
+  }
+  /* shapes peeking from behind the video panel, like the original */
+  .deco--circle {
+    top: -28px;
+    right: -30px;
+    width: 96px;
+    height: 96px;
+    border-radius: 50%;
+    background: var(--red);
+    z-index: -1;
+  }
+  .deco--flag {
+    left: -26px;
+    bottom: 30%;
+    width: 0;
+    height: 0;
+    border-top: 52px solid var(--yellow-note);
+    border-right: 40px solid transparent;
+    transform: rotate(12deg);
+    z-index: -1;
+  }
+  .deco--para {
+    bottom: -20px;
+    right: 8%;
+    width: 110px;
+    height: 64px;
+    background: var(--blue);
+    transform: skewX(-18deg) rotate(-4deg);
+    z-index: -1;
+  }
+</style>

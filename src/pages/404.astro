@@ -1,0 +1,21 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Not Found">
+  <div class="nf">
+    <p class="caption">404 — this page went missing</p>
+    <h1 class="page-title">Not Found</h1>
+    <p class="prose">
+      The page you're after doesn't exist — maybe it hasn't been made yet.
+    </p>
+    <p class="home-link">
+      <a class="btn-pill" href="/">Back to the site</a>
+    </p>
+  </div>
+</BaseLayout>
+
+<style>
+  .nf { text-align: center; padding-top: 3rem; }
+  .home-link { margin-top: 2rem; }
+</style>

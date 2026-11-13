@@ -1,0 +1,120 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import VideoEmbed from '../components/VideoEmbed.astro';
+import { CLIENTS, FREELANCE_INTRO } from '../data/clients';
+import { CONTACT_EMAIL } from '../data/site';
+---
+
+<BaseLayout title="Freelance">
+  <h1 class="page-title reveal">Freelance</h1>
+
+  <p class="prose reveal">{FREELANCE_INTRO}</p>
+  <p class="prose contact-line reveal">
+    For inquiries, contact Zeb at
+    <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>.
+  </p>
+
+  <div class="grid">
+    {CLIENTS.map((c) => (
+      <article class="client reveal">
+        <h2 class="client-title" set:html={c.title} />
+        <p class="subtitle client-package">{c.package}</p>
+        {c.video.type === 'youtube' ? (
+          <VideoEmbed
+            provider="youtube"
+            id={c.video.id}
+            title={`Client video — ${c.title.replace(/<br>/g, ' ')}`}
+          />
+        ) : (
+          <div class="ig-embed" data-ig={c.video.id} data-ig-path={c.video.path}>
+            <a
+              class="ig-fallback"
+              href={`https://www.instagram.com/${c.video.path}/${c.video.id}/`}
+              target="_blank"
+              rel="noopener"
+            >
+              Watch on Instagram ↗
+            </a>
+          </div>
+        )}
+      </article>
+    ))}
+  </div>
+</BaseLayout>
+
+<style>
+  .contact-line { text-align: center; margin-bottom: 3rem; }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2.5rem 1.5rem;
+    max-width: 880px;
+    margin-inline: auto;
+  }
+  @media (max-width: 680px) {
+    .grid { grid-template-columns: 1fr; }
+  }
+  .client {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  .client-title {
+    font-size: var(--size-h3);
+    font-weight: 400;
+    line-height: 1.25;
+  }
+  .client-package { margin-top: 0.15rem; margin-bottom: 0.9rem; }
+  .client :global(.embed) {
+    width: 100%;
+    max-width: 420px;
+  }
+  /* Instagram embeds are vertical — official oEmbed iframe via /embed url */
+  .ig-embed {
+    width: 100%;
+    max-width: 340px;
+    aspect-ratio: 9 / 16;
+    border-radius: 2px;
+    overflow: hidden;
+    background: #fafafa;
+    display: grid;
+    place-items: center;
+  }
+  .ig-embed iframe {
+    width: 100%;
+    height: 100%;
+    border: 0;
+  }
+  .ig-fallback {
+    font-size: var(--size-small);
+    text-decoration: underline dotted;
+    text-underline-offset: 0.3em;
+  }
+</style>
+
+<script>
+  // Instagram embeds: official oEmbed iframe, lazy-loaded on scroll
+  const holders = document.querySelectorAll<HTMLElement>('.ig-embed');
+  if (holders.length && 'IntersectionObserver' in window) {
+    const io = new IntersectionObserver(
+      (entries) => {
+        for (const en of entries) {
+          if (!en.isIntersecting) continue;
+          const el = en.target as HTMLElement;
+          io.unobserve(el);
+          const code = el.dataset.ig ?? '';
+          const path = el.dataset.igPath ?? 'reel';
+          const iframe = document.createElement('iframe');
+          iframe.src = `https://www.instagram.com/${path}/${code}/embed/captioned/`;
+          iframe.title = 'Instagram video';
+          iframe.loading = 'lazy';
+          el.innerHTML = '';
+          el.appendChild(iframe);
+        }
+      },
+      { rootMargin: '300px' }
+    );
+    holders.forEach((h) => io.observe(h));
+  }
+</script>

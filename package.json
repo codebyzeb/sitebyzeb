@@ -1,0 +1,20 @@
+{
+  "name": "sitebyzeb",
+  "type": "module",
+  "version": "1.0.0",
+  "private": true,
+  "description": "sitebyzeb.com — Zeb Goriely's personal site, rebuilt from the previous site",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "deploy": "astro build && gh-pages -d dist -b gh-pages -m \"Deploy sitebyzeb.com [skip ci]\""
+  },
+  "dependencies": {
+    "@astrojs/sitemap": "^3.2.1",
+    "astro": "^5.7.0"
+  },
+  "devDependencies": {
+    "gh-pages": "^6.3.0"
+  }
+}
