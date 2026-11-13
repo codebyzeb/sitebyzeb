@@ -3,7 +3,7 @@
   "type": "module",
   "version": "1.0.0",
   "private": true,
-  "description": "sitebyzeb.com — Zeb Goriely's personal site, rebuilt from the previous site",
+  "description": "sitebyzeb.com — Zeb Goriely's personal site, self-coded",
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",

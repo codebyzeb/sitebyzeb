@@ -6,7 +6,7 @@ export default defineConfig({
   // Canonical URL — used for sitemap, canonical tags, og:image URLs
   site: 'https://sitebyzeb.com',
   integrations: [sitemap()],
-  // 'directory' build format gives /work/ URLs (matches the previous-site URLs)
+  // 'directory' build format gives /work/ URLs (same URLs as the original site)
   build: {
     format: 'directory',
   },
