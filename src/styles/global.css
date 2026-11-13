@@ -252,12 +252,14 @@ a { color: inherit; }
 /* ---------- motion ---------- */
 
 @media (prefers-reduced-motion: no-preference) {
-  .reveal {
+  /* only hide content once the inline script in BaseLayout has confirmed
+     it can reveal it (html.js-reveal); without JS everything stays visible */
+  html.js-reveal .reveal {
     opacity: 0;
     transform: translateY(24px);
     transition: opacity 0.6s ease, transform 0.6s ease;
   }
-  .reveal.is-visible {
+  html.js-reveal .reveal.is-visible {
     opacity: 1;
     transform: none;
   }
