@@ -1,0 +1,87 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Slideshow from '../components/Slideshow.astro';
+import { Image } from 'astro:assets';
+import { FILMS } from '../data/films';
+---
+
+<BaseLayout title="Short Films">
+  <h1 class="page-title reveal">Short Films</h1>
+
+  <div class="films">
+    {FILMS.map((film) => (
+      <article class="film reveal">
+        <header class="film-head">
+          <h2 class="film-title">{film.title}</h2>
+          <p class="subtitle">{film.genre}</p>
+        </header>
+
+        <Slideshow
+          slides={film.slides.map((src, i) => ({
+            src,
+            alt: `${film.title} — still ${i + 1}`,
+          }))}
+        />
+
+        <div class="film-body">
+          {film.description.map((p) => <p class="prose">{p}</p>)}
+        </div>
+
+        {film.laurels.length > 0 && (
+          <div class="laurels">
+            {film.laurels.map((l) => (
+              <Image src={l} alt="Festival laurel" height={84} loading="lazy" />
+            ))}
+          </div>
+        )}
+
+        <a class="btn-pill" href={film.link.href} target="_blank" rel="noopener">
+          {film.link.label}
+        </a>
+      </article>
+    ))}
+  </div>
+</BaseLayout>
+
+<style>
+  .films {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(4rem, 9vw, 6.5rem);
+    max-width: 760px;
+    margin-inline: auto;
+  }
+  .film {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  .film-head { margin-bottom: 1rem; }
+  .film-title {
+    font-size: var(--size-h3);
+    font-weight: 400;
+    line-height: 1.2;
+  }
+  .subtitle { margin-top: 0.15rem; }
+  .film-body {
+    display: flex;
+    flex-direction: column;
+    gap: 0.9em;
+    margin-top: 1.25rem;
+    text-align: left;
+  }
+  .laurels {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.25rem;
+    margin: 1.5rem 0;
+  }
+  .laurels :global(img) {
+    height: 84px;
+    width: auto;
+    border-radius: 2px;
+  }
+  .film .btn-pill { margin-top: 0.5rem; }
+</style>

@@ -1,0 +1,157 @@
+---
+/*
+ * Slideshow — crossfade, autoplay, counter (like the original site widget).
+ * Original had no arrows; we add dots + hover-pause as light enhancements.
+ */
+import { Image } from 'astro:assets';
+
+interface Slide {
+  src: ImageMetadata;
+  alt: string;
+  caption?: string;
+}
+
+interface Props {
+  slides: Slide[];
+  ratio?: string; // css aspect-ratio, default 16/9
+}
+
+const { slides, ratio = '16 / 9' } = Astro.props;
+const captions = slides.map((s) => s.caption ?? '');
+const hasCaptions = slides.some((s) => s.caption);
+---
+
+<div
+  class="slideshow"
+  style={`aspect-ratio: ${ratio};`}
+  data-captions={JSON.stringify(captions)}
+>
+  <div class="slides" role="group" aria-label="Image slideshow">
+    {slides.map((s, i) => (
+      <figure class="slide" data-i={i} aria-hidden={i === 0 ? 'false' : 'true'}>
+        <Image
+          src={s.src}
+          alt={s.alt}
+          widths={[480, 768, 1024, 1440]}
+          sizes="(max-width: 700px) 92vw, 620px"
+          loading={i === 0 ? 'eager' : 'lazy'}
+        />
+      </figure>
+    ))}
+  </div>
+
+  <div class="slideshow-ui" aria-hidden="true">
+    <span class="counter">1/{slides.length}</span>
+    <div class="dots">
+      {slides.map((_, i) => (
+        <button class="dot" data-i={i} tabindex={-1} aria-label={`Slide ${i + 1}`} />
+      ))}
+    </div>
+  </div>
+
+  {hasCaptions && <p class="caption slideshow-caption">{slides[0].caption}</p>}
+</div>
+
+<style>
+  .slideshow {
+    position: relative;
+    width: 100%;
+    max-width: 640px;
+    margin-inline: auto;
+  }
+  .slides {
+    position: relative;
+    width: 100%;
+    aspect-ratio: inherit;
+    border-radius: 2px;
+    overflow: hidden;
+    box-shadow: 0 14px 28px -14px rgba(34, 34, 34, 0.35);
+  }
+  .slide {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    transition: opacity 0.9s ease;
+    margin: 0;
+  }
+  .slide.is-active { opacity: 1; }
+  .slide :global(img) { width: 100%; height: 100%; object-fit: cover; }
+
+  .slideshow-ui {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 0.4rem;
+  }
+  .counter {
+    font-size: var(--size-small);
+    color: var(--ink-faint);
+    letter-spacing: 0.05em;
+    font-variant-numeric: tabular-nums;
+  }
+  .dots { display: flex; gap: 0.45rem; }
+  .dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    border: 0;
+    background: rgba(34, 34, 34, 0.2);
+    cursor: pointer;
+    padding: 0;
+    transition: background 0.2s ease, transform 0.2s ease;
+  }
+  .dot.is-active { background: var(--ink); transform: scale(1.25); }
+  .slideshow-caption { margin-top: 0.75rem; min-height: 2.6em; }
+</style>
+
+<script>
+  // Slideshow controller: crossfade + autoplay, pause on hover/focus, dots to jump.
+  const slideshows = document.querySelectorAll<HTMLElement>('.slideshow');
+  const prefersReduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  for (const ss of slideshows) {
+    const slides = Array.from(ss.querySelectorAll<HTMLElement>('.slide'));
+    const dots = Array.from(ss.querySelectorAll<HTMLButtonElement>('.dot'));
+    const counter = ss.querySelector<HTMLElement>('.counter');
+    const captionEl = ss.querySelector<HTMLElement>('.slideshow-caption');
+    let captionTexts: string[] = [];
+    try {
+      captionTexts = JSON.parse(ss.dataset.captions ?? '[]');
+    } catch {}
+    let i = 0;
+    let timer: ReturnType<typeof setInterval> | undefined;
+
+    const show = (n: number) => {
+      i = (n + slides.length) % slides.length;
+      slides.forEach((s, k) => {
+        s.classList.toggle('is-active', k === i);
+        s.setAttribute('aria-hidden', k === i ? 'false' : 'true');
+      });
+      dots.forEach((d, k) => d.classList.toggle('is-active', k === i));
+      if (counter) counter.textContent = `${i + 1}/${slides.length}`;
+      if (captionEl) captionEl.textContent = captionTexts[i] ?? '';
+    };
+
+    const stop = () => timer && clearInterval(timer);
+    const start = () => {
+      if (prefersReduced || slides.length < 2) return;
+      stop();
+      timer = setInterval(() => show(i + 1), 3400);
+    };
+
+    dots.forEach((d) =>
+      d.addEventListener('click', () => {
+        show(Number(d.dataset.i));
+        start();
+      })
+    );
+    ss.addEventListener('mouseenter', stop);
+    ss.addEventListener('mouseleave', start);
+    ss.addEventListener('focusin', stop);
+    ss.addEventListener('focusout', start);
+
+    show(0);
+    start();
+  }
+</script>

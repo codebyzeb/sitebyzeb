@@ -1,0 +1,16 @@
+---
+import { Image } from 'astro:assets';
+import starBlue from '../assets/star-blue.png';
+
+const year = new Date().getFullYear();
+---
+
+<footer class="site-footer">
+  <nav class="footer-wordmarks" aria-label="Footer">
+    <a href="/">SiteByZeb</a>
+    <a href="/work/">WorkByZeb</a>
+    <a href="/info/">InfoByZeb</a>
+  </nav>
+  <Image class="footer-star" src={starBlue} alt="" width={28} height={28} loading="lazy" />
+  <p class="footer-note">&copy; {year} Zeb Goriely</p>
+</footer>
