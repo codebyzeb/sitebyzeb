@@ -13,9 +13,10 @@ interface Props {
   title?: string;
   vertical?: boolean; // 9:16 YouTube Shorts
   expandable?: boolean; // grows on hover, grows more + locks once playing
+  fallbackHref?: string; // tiktok: link shown until/unless the embed loads
 }
 
-const { provider, id, title = 'Video', vertical = false, expandable = false } = Astro.props;
+const { provider, id, title = 'Video', vertical = false, expandable = false, fallbackHref } = Astro.props;
 
 const embedUrl =
   provider === 'youtube'
@@ -34,7 +35,14 @@ const poster =
 
 {provider === 'tiktok' ? (
   <div class="embed embed--tiktok" data-embed-url={embedUrl}>
-    <div class="embed-loading" />
+    <a
+      class="embed-fallback"
+      href={fallbackHref ?? embedUrl}
+      target="_blank"
+      rel="noopener"
+    >
+      Watch on TikTok ↗
+    </a>
   </div>
 ) : (
   <div
@@ -138,11 +146,24 @@ const poster =
   }
   .play svg { width: 100%; height: 100%; display: block; }
   .embed--tiktok {
-    background: transparent;
+    background: var(--bg);
+    border: 2px solid var(--ink);
+    border-radius: 2px;
     box-shadow: none;
     aspect-ratio: 9 / 16;
     max-width: 340px;
     margin-inline: auto;
+    display: grid;
+    place-items: center;
+  }
+  .embed-fallback {
+    font-family: var(--font-caption);
+    font-style: italic;
+    font-size: var(--size-small);
+    text-decoration: underline dotted;
+    text-underline-offset: 0.3em;
+    padding: 1rem;
+    text-align: center;
   }
 </style>
 

@@ -64,6 +64,7 @@ export const VIRAL_TIKTOK = {
   blurb:
     'In 2022, Zeb\u2019s TikTok about Wordle went viral and received some media attention.',
   tiktokId: '7058690677634256134',
+  tiktokUrl: 'https://www.tiktok.com/@tokbyzeb/video/7058690677634256134',
   image: tiktokImg,
   imageAlt: 'Screenshot of media coverage of the viral Wordle TikTok',
 };

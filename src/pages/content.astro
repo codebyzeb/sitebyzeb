@@ -67,7 +67,12 @@ import {
     <h2 class="section-heading">{VIRAL_TIKTOK.heading}</h2>
     <p class="band-blurb">{VIRAL_TIKTOK.blurb}</p>
     <div class="tiktok-row">
-      <VideoEmbed provider="tiktok" id={VIRAL_TIKTOK.tiktokId} title="Viral Wordle TikTok" />
+      <VideoEmbed
+        provider="tiktok"
+        id={VIRAL_TIKTOK.tiktokId}
+        title="Viral Wordle TikTok"
+        fallbackHref={VIRAL_TIKTOK.tiktokUrl}
+      />
       <Image
         class="tiktok-img"
         src={VIRAL_TIKTOK.image}
