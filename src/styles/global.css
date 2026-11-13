@@ -1,8 +1,21 @@
 /*
  * sitebyzeb.com — design tokens & base styles
- * Design tokens ported from the original site's design.
  */
 
+/* Rubik (SIL OFL) — display face on this branch.
+   Rubik's 700 maps in as the display "regular": its optical mass matches
+   Coolvetica Rg, which the site's type system was built around.
+   Backups considered: Signika Negative 700 (closest metrics),
+   Chivo 700 (exact chunk, drier personality). */
+@font-face {
+  font-family: 'Rubik';
+  src: url('/fonts/rubik-700.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Coolvetica — fallback (licensed; see fonts/ locally, not committed) */
 @font-face {
   font-family: 'Coolvetica';
   src: url('/fonts/coolvetica-rg.woff2') format('woff2');
@@ -28,7 +41,7 @@
   --brown: #9b6867;    /* research panel */
 
   /* type scale (original: H1 49/61, H2 37/41, body 12/18, caption 14/18) */
-  --font-display: 'Coolvetica', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  --font-display: 'Rubik', 'Coolvetica', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   --font-caption: Georgia, 'Times New Roman', serif;
 
   --size-h1: clamp(2.6rem, 6vw, 4.1rem);   /* "Zeb Goriely" / page titles */
@@ -57,8 +70,27 @@ body {
   font-family: var(--font-display);
   font-size: var(--size-body);
   line-height: var(--line-body);
+  /* Rubik runs looser than the previous face — tighten to keep the
+     logotype density (especially in all-caps) */
+  letter-spacing: -0.02em;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
+}
+
+/* caps + display contexts get an extra notch of tracking, matching the
+   density of the previous display face in wordmarks and headings */
+.site-title,
+.page-title,
+.section-heading,
+.list-heading,
+.sticker .label,
+.nav-word,
+.footer-wordmarks,
+.tile-label,
+.film-title,
+.client-title,
+.find-heading {
+  letter-spacing: -0.04em;
 }
 
 img, svg, video { display: block; max-width: 100%; }
