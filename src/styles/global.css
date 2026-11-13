@@ -101,7 +101,7 @@ a { color: inherit; }
   place-items: center;
   width: 6.8em;
   height: 3.1em;
-  font-size: clamp(0.95rem, 1.6vw, 1.05rem);
+  font-size: clamp(1.1rem, 1.9vw, 1.25rem);
   font-weight: 400;
   letter-spacing: 0.04em;
   text-transform: uppercase;
@@ -131,8 +131,9 @@ a { color: inherit; }
   border-bottom: 2px dotted currentColor;
 }
 
-/* idle pulse (subtle size breathing, staggered per sticker) and
-   a single playful spin of the shape on hover */
+/* idle pulse (subtle size breathing, staggered per sticker).
+   The hover spin is driven by JS (Web Animations API) so it always runs
+   to completion even if the pointer leaves mid-spin. */
 @media (prefers-reduced-motion: no-preference) {
   .sticker {
     animation: sticker-pulse 3.2s ease-in-out infinite;
@@ -142,18 +143,10 @@ a { color: inherit; }
   .sticker:focus-visible {
     animation-play-state: paused;
   }
-  .sticker:hover .shape,
-  .sticker:focus-visible .shape {
-    animation: shape-spin 0.55s ease-out 1;
-  }
 }
 @keyframes sticker-pulse {
   0%, 100% { scale: 1; }
   50% { scale: 1.05; }
-}
-@keyframes shape-spin {
-  from { rotate: var(--tilt, 0deg); }
-  to { rotate: calc(var(--tilt, 0deg) + 360deg); }
 }
 
 /* variants */
