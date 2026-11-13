@@ -9,7 +9,7 @@
     "build": "astro build",
     "preview": "astro preview",
     "deploy": "npm run build && npm run deploy:push",
-    "deploy:push": "cd dist && git init -q -b gh-pages && git add -A && git -c user.name='Zeb Goriely' -c user.email='filmbyzeb@gmail.com' commit -qm 'Deploy sitebyzeb.com' && git -c credential.helper='!/opt/homebrew/bin/gh auth git-credential' push -qf https://github.com/codebyzeb/sitebyzeb.git gh-pages:gh-pages"
+    "deploy:push": "find dist -name .DS_Store -delete && cd dist && git init -q -b gh-pages && git add -A && git -c user.name='Zeb Goriely' -c user.email='filmbyzeb@gmail.com' commit -qm 'Deploy sitebyzeb.com' && git -c credential.helper='!/opt/homebrew/bin/gh auth git-credential' push -qf https://github.com/codebyzeb/sitebyzeb.git gh-pages:gh-pages"
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.2.1",
