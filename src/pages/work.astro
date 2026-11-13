@@ -1,6 +1,5 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import CircleMark from '../components/CircleMark.astro';
 import { Image } from 'astro:assets';
 import shortFilms from '../assets/work-short-films.jpg';
 import freelance from '../assets/work-freelance.png';
@@ -28,7 +27,7 @@ const comingSoon = [
       <a class="tile reveal" href={c.href}>
         <span class="tile-label">
           {c.label}
-          <CircleMark />
+          <span class="orbit" aria-hidden="true"><i class="orbit-dot"></i></span>
         </span>
         <Image
           class="tile-img"
@@ -44,7 +43,7 @@ const comingSoon = [
       <div class="tile tile--soon reveal" aria-label={`${c.label.replace('\n', ' ')} — coming soon`}>
         <span class="tile-label">
           {c.label}<br /><small>coming soon</small>
-          <CircleMark />
+          <span class="orbit" aria-hidden="true"><i class="orbit-dot"></i></span>
         </span>
       </div>
     ))}
@@ -111,37 +110,43 @@ const comingSoon = [
   }
   .tile--soon { cursor: default; }
 
-  /* the circling red pen: hidden until the tile is hovered, then the
-     ellipse draws itself around the text in one stroke */
-  .circle-mark {
+  /* a small red circle that spins around the text while the tile is
+     hovered, and disappears again when it isn't */
+  .orbit {
     position: absolute;
-    inset: -0.45em -0.85em -0.6em -0.85em;
+    inset: -0.55em -1em;
     opacity: 0;
     pointer-events: none;
-    transition: opacity 0.25s ease;
+    transition: opacity 0.2s ease;
   }
-  .tile:hover .circle-mark,
-  .tile:focus-visible .circle-mark { opacity: 1; }
-  .circle-mark ellipse {
-    fill: none;
-    stroke: var(--red);
-    stroke-width: 3.5px;
-    stroke-linecap: round;
-    stroke-dasharray: 100;
-    stroke-dashoffset: 100;
+  .tile:hover .orbit,
+  .tile:focus-visible .orbit { opacity: 1; }
+
+  .orbit-dot {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: var(--red);
+    box-shadow: 0 1px 3px rgba(34, 34, 34, 0.35);
+    offset-path: ellipse(50% 50% at 50% 50%);
+    offset-anchor: center;
+    offset-rotate: 0deg;
   }
-  .tile:hover .circle-mark ellipse,
-  .tile:focus-visible .circle-mark ellipse {
-    animation: circle-draw 0.8s ease-out forwards;
-  }
-  @keyframes circle-draw {
-    to { stroke-dashoffset: 0; }
-  }
-  @media (prefers-reduced-motion: reduce) {
-    .tile:hover .circle-mark ellipse,
-    .tile:focus-visible .circle-mark ellipse {
-      animation: none;
-      stroke-dashoffset: 0;
+  @media (prefers-reduced-motion: no-preference) {
+    .tile:hover .orbit-dot,
+    .tile:focus-visible .orbit-dot {
+      animation: orbit-travel 1.6s linear infinite;
     }
+  }
+  @keyframes orbit-travel {
+    from { offset-distance: 0%; }
+    to { offset-distance: 100%; }
+  }
+  /* graceful fallback: hide the orbit on browsers without motion path */
+  @supports not (offset-path: ellipse(50% 50% at 50% 50%)) {
+    .orbit { display: none; }
   }
 </style>

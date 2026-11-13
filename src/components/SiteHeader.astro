@@ -28,3 +28,30 @@ const links = [
     ))}
   </nav>
 </header>
+
+<script>
+  // One playful 360° spin of the sticker shape on hover/focus. Uses the Web
+  // Animations API so the spin always finishes, even if the pointer leaves
+  // mid-animation (a CSS :hover animation would snap back).
+  const prefersReduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const stickers = document.querySelectorAll<HTMLElement>('.site-header .sticker');
+  for (const sticker of stickers) {
+    const shape = sticker.querySelector<HTMLElement>('.shape');
+    if (!shape) continue;
+    const spin = () => {
+      if (prefersReduced || shape.getAnimations().length) return;
+      const tilt = parseFloat(
+        getComputedStyle(shape).getPropertyValue('--tilt') || '0deg'
+      );
+      shape.animate(
+        [
+          { rotate: `${tilt}deg` },
+          { rotate: `${tilt + 360}deg` },
+        ],
+        { duration: 550, easing: 'ease-out' }
+      );
+    };
+    sticker.addEventListener('pointerenter', spin);
+    sticker.addEventListener('focusin', spin);
+  }
+</script>
