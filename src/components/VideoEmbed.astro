@@ -12,9 +12,10 @@ interface Props {
   id: string; // video id (yt / vimeo / tiktok numeric id)
   title?: string;
   vertical?: boolean; // 9:16 YouTube Shorts
+  expandable?: boolean; // grows on hover, grows more + locks once playing
 }
 
-const { provider, id, title = 'Video', vertical = false } = Astro.props;
+const { provider, id, title = 'Video', vertical = false, expandable = false } = Astro.props;
 
 const embedUrl =
   provider === 'youtube'
@@ -37,7 +38,7 @@ const poster =
   </div>
 ) : (
   <div
-    class:list={['embed', 'embed--facade', { 'is-vertical': vertical }]}
+    class:list={['embed', 'embed--facade', { 'is-vertical': vertical, 'embed--expandable': expandable }]}
     data-embed-url={embedUrl}
     role="button"
     tabindex="0"
@@ -73,6 +74,40 @@ const poster =
   .embed--facade { cursor: pointer; }
   .embed--facade:hover .play,
   .embed--facade:focus-visible .play { transform: scale(1.12); }
+
+  /* expandable: slight growth on hover, bigger + locked once playing */
+  .embed--expandable {
+    transition: scale 0.35s cubic-bezier(0.2, 0.8, 0.3, 1);
+    will-change: scale;
+  }
+  .embed--expandable:not(.is-locked):hover {
+    scale: 1.045;
+  }
+  .embed--expandable.is-locked {
+    scale: 1.14;
+    z-index: 5;
+  }
+  .embed-close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 3;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: var(--bg);
+    border: 2px solid var(--ink);
+    color: var(--ink);
+    font-size: 15px;
+    line-height: 1;
+    cursor: pointer;
+    display: none;
+    place-items: center;
+    padding: 0;
+    font-family: var(--font-caption);
+  }
+  .embed--expandable.is-locked .embed-close { display: grid; }
+  .embed-close:hover { background: var(--yellow-note); }
   .embed-poster {
     position: absolute;
     inset: 0;
@@ -110,6 +145,7 @@ const poster =
   // Click-to-load facades + lazy tiktok iframes
   const facades = document.querySelectorAll<HTMLElement>('.embed--facade');
   for (const f of facades) {
+    const facadeMarkup = f.innerHTML;
     const activate = () => {
       if (f.dataset.loaded) return;
       f.dataset.loaded = '1';
@@ -120,6 +156,23 @@ const poster =
       iframe.allowFullscreen = true;
       f.innerHTML = '';
       f.appendChild(iframe);
+      // expandable: lock into the larger size while playing, with a close
+      // button that restores the poster facade
+      if (f.classList.contains('embed--expandable')) {
+        f.classList.add('is-locked');
+        const close = document.createElement('button');
+        close.className = 'embed-close';
+        close.type = 'button';
+        close.setAttribute('aria-label', 'Close video');
+        close.textContent = '\u2715';
+        close.addEventListener('click', (ev) => {
+          ev.stopPropagation();
+          f.classList.remove('is-locked');
+          f.dataset.loaded = '';
+          f.innerHTML = facadeMarkup;
+        });
+        f.appendChild(close);
+      }
     };
     f.addEventListener('click', activate);
     f.addEventListener('keydown', (e) => {

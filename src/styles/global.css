@@ -89,57 +89,108 @@ a { color: inherit; }
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: clamp(1.5rem, 5vw, 3.5rem);
+  gap: clamp(1.75rem, 5vw, 4rem);
   padding: clamp(1rem, 3vw, 1.75rem) 0 clamp(0.5rem, 2vw, 1rem);
 }
 
-/* sticker shapes */
+/* sticker shapes — slightly bigger, idle-pulsing, spin on hover,
+   and the hidden "BYZEB" tail that appears on hover */
 .sticker {
   position: relative;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0.55em 0.9em;
-  font-size: var(--size-small);
+  display: inline-grid;
+  place-items: center;
+  width: 6.8em;
+  height: 3.1em;
+  font-size: clamp(0.95rem, 1.6vw, 1.05rem);
   font-weight: 400;
   letter-spacing: 0.04em;
   text-transform: uppercase;
   text-decoration: none;
-  transition: transform 0.2s ease;
 }
-.sticker:hover { transform: scale(1.08) rotate(var(--tilt, 0deg)); }
-.sticker.is-active::after {
+.sticker .shape { position: absolute; inset: 0; }
+.sticker .label { position: relative; z-index: 2; white-space: nowrap; }
+.sticker .rest {
+  display: inline-block;
+  max-width: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: max-width 0.3s ease, opacity 0.25s ease 0.05s;
+}
+.sticker:hover .rest,
+.sticker:focus-visible .rest {
+  max-width: 3.8em;
+  opacity: 1;
+}
+
+.sticker.is-active .label::after {
   content: '';
   position: absolute;
-  left: 12%;
-  right: 12%;
-  bottom: -0.45em;
+  left: 8%;
+  right: 8%;
+  bottom: -0.5em;
   border-bottom: 2px dotted currentColor;
 }
 
-.sticker--note {  /* yellow sticky note, tilted */
+/* idle pulse (subtle size breathing, staggered per sticker) and
+   a single playful spin of the shape on hover */
+@media (prefers-reduced-motion: no-preference) {
+  .sticker {
+    animation: sticker-pulse 3.2s ease-in-out infinite;
+    animation-delay: calc(var(--i, 0) * 0.45s);
+  }
+  .sticker:hover,
+  .sticker:focus-visible {
+    animation-play-state: paused;
+  }
+  .sticker:hover .shape,
+  .sticker:focus-visible .shape {
+    animation: shape-spin 0.55s ease-out 1;
+  }
+}
+@keyframes sticker-pulse {
+  0%, 100% { scale: 1; }
+  50% { scale: 1.05; }
+}
+@keyframes shape-spin {
+  from { rotate: var(--tilt, 0deg); }
+  to { rotate: calc(var(--tilt, 0deg) + 360deg); }
+}
+
+/* variants */
+.sticker--note .shape {  /* yellow sticky note, tilted */
   background: var(--yellow-note);
-  transform: rotate(-4deg);
+  border-radius: 3px;
+  rotate: -4deg;
   --tilt: -4deg;
-  box-shadow: 0 1px 0 rgba(34,34,34,0.15);
+  box-shadow: 0 1px 0 rgba(34, 34, 34, 0.15);
 }
 .sticker--triangle { /* red triangle */
-  background: var(--red);
-  color: #fff;
-  clip-path: polygon(50% 0%, 100% 100%, 0% 100%);
-  transform: rotate(3deg);
-  --tilt: 3deg;
-  padding: 1.7em 1.4em 0.6em;
+  width: 7.4em;
+  height: 4em;
 }
-.sticker--triangle.is-active::after { bottom: 0.3em; }
+.sticker--triangle .shape {
+  background: var(--red);
+  clip-path: polygon(50% 0%, 100% 100%, 0% 100%);
+  rotate: 3deg;
+  --tilt: 3deg;
+}
+.sticker--triangle .label {
+  color: #fff;
+  margin-top: 1.15em; /* sit in the wide lower half of the triangle */
+  text-shadow: 0 1px 2px rgba(34, 34, 34, 0.35);
+}
+.sticker--triangle.is-active .label::after { bottom: -0.35em; }
 .sticker--star { /* blue star */
+  width: 6.2em;
+  height: 5.6em;
+}
+.sticker--star .shape {
   background: var(--blue);
   clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
-  transform: rotate(-8deg);
+  rotate: -8deg;
   --tilt: -8deg;
-  padding: 1.9em 1.6em 1.6em;
 }
-.sticker--star.is-active::after { bottom: 0.35em; left: 25%; right: 25%; }
+.sticker--star.is-active .label::after { bottom: -0.3em; }
 
 /* ---------- layout helpers ---------- */
 
