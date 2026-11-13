@@ -8,6 +8,12 @@ const links = [
   { label: 'work', rest: 'byzeb', href: '/work/', variant: 'triangle' },
   { label: 'info', rest: 'byzeb', href: '/info/', variant: 'star' },
 ];
+
+const navWords = [
+  { label: 'SiteByZeb', href: '/', mini: 'site', delay: '0.05s' },
+  { label: 'WorkByZeb', href: '/work/', mini: 'work', delay: '0.15s' },
+  { label: 'InfoByZeb', href: '/info/', mini: 'info', delay: '0.25s' },
+];
 ---
 
 <header class="site-header">
@@ -27,6 +33,27 @@ const links = [
       </a>
     ))}
   </nav>
+
+  <!-- mobile: three-line menu opening a full-screen nav page (like the original) -->
+  <button
+    class="nav-toggle"
+    type="button"
+    aria-expanded="false"
+    aria-controls="nav-overlay"
+    aria-label="Menu"
+  >
+    <i aria-hidden="true"></i><i aria-hidden="true"></i><i aria-hidden="true"></i>
+  </button>
+  <div class="nav-overlay" id="nav-overlay">
+    <nav class="nav-overlay-links" aria-label="Menu">
+      {navWords.map((l) => (
+        <a class="nav-word" href={l.href} style={`--d: ${l.delay}`}>
+          <span class:list={['shape-mini', `shape-mini--${l.mini}`]} aria-hidden="true"></span>
+          {l.label}
+        </a>
+      ))}
+    </nav>
+  </div>
 </header>
 
 <script>
@@ -53,5 +80,26 @@ const links = [
     };
     sticker.addEventListener('pointerenter', spin);
     sticker.addEventListener('focusin', spin);
+  }
+
+  // Mobile menu: three-line toggle opens the full-screen nav page.
+  const toggle = document.querySelector<HTMLButtonElement>('.nav-toggle');
+  const overlay = document.querySelector<HTMLElement>('.nav-overlay');
+  if (toggle && overlay) {
+    const setOpen = (open: boolean) => {
+      toggle.setAttribute('aria-expanded', String(open));
+      toggle.setAttribute('aria-label', open ? 'Close menu' : 'Menu');
+      overlay.classList.toggle('is-open', open);
+      document.body.style.overflow = open ? 'hidden' : '';
+    };
+    toggle.addEventListener('click', () => {
+      setOpen(toggle.getAttribute('aria-expanded') !== 'true');
+    });
+    overlay.querySelectorAll('a').forEach((a) => {
+      a.addEventListener('click', () => setOpen(false));
+    });
+    addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') setOpen(false);
+    });
   }
 </script>
