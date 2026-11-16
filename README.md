@@ -29,23 +29,15 @@ npm run build     # static build to dist/
 npm run preview   # serve dist/ locally
 ```
 
-## Fonts (licensing)
+## Fonts
 
-The design font is **the previous display face** (the foundry). The desktop licence that
-ships with the free download does **not** cover webfont use — buy the
-webfont licence (~$20, typodermicfonts.com) for this domain. The font files
-are **gitignored** (no redistribution):
-
-1. Put `the previous display face.woff2` at `public/fonts/coolvetica-rg.woff2`
-   (a copy already exists on Zeb's machine — `fonts/` folder, gitignored).
-2. CSS picks it up via the `@font-face` rule in `src/styles/global.css`.
-
-Without the file the site falls back to Helvetica Neue — nothing breaks.
+The display face is **Rubik** (SIL Open Font License 1.1) — the woff2 and
+its licence are committed in `public/fonts/`, so a fresh clone builds
+correctly with no extra steps.
 
 ## Deploying
 
-Deploy is a **local build** (so the licensed font never enters the source
-repo):
+Deploy builds locally and pushes the output:
 
 ```sh
 git push            # save source to GitHub (main)
@@ -80,7 +72,6 @@ src/
   styles/      design tokens + base CSS
 public/        favicon + fonts (fonts gitignored — see above)
 legacy branch  complete archive of the original site's captured export
-fonts/         licensed the previous display face files (gitignored)
 ```
 
 ## Notes

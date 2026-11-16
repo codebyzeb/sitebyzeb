@@ -2,23 +2,15 @@
  * sitebyzeb.com — design tokens & base styles
  */
 
-/* Rubik (SIL OFL) — display face on this branch.
-   Rubik's 700 maps in as the display "regular": its optical mass matches
-   the previous display face, which the site's type system was built around.
-   Backups considered: Signika Negative 700 (closest metrics),
-   Chivo 700 (exact chunk, drier personality). */
+/* Rubik (SIL Open Font License 1.1) — the display face.
+   Its 700 maps in as the display "regular": the chunk the site's type
+   system was designed around. The font + licence are committed in
+   public/fonts/, so builds work from a fresh clone.
+   Backups considered: Signika Negative 700 (closest metrics to the
+   previous face), Chivo 700 (exact chunk, drier personality). */
 @font-face {
   font-family: 'Rubik';
   src: url('/fonts/rubik-700.woff2') format('woff2');
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-
-/* the previous display face — fallback (licensed; see fonts/ locally, not committed) */
-@font-face {
-  font-family: 'the previous display face';
-  src: url('/fonts/coolvetica-rg.woff2') format('woff2');
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -41,7 +33,7 @@
   --brown: #9b6867;    /* research panel */
 
   /* type scale (original: H1 49/61, H2 37/41, body 12/18, caption 14/18) */
-  --font-display: 'Rubik', 'the previous display face', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  --font-display: 'Rubik', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   --font-caption: Georgia, 'Times New Roman', serif;
 
   --size-h1: clamp(2.6rem, 6vw, 4.1rem);   /* "Zeb Goriely" / page titles */

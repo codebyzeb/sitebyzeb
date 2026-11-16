@@ -5,12 +5,6 @@ dist/
 # dependencies
 node_modules/
 
-# licensed fonts — do not commit (Typodermic licence, see fonts/ locally)
-# NOTE: anchored (/) so the gh-pages deploy tool — which applies these
-# patterns to dist/ when publishing — doesn't exclude dist/fonts/
-/fonts/
-/public/fonts/*.woff2
-
 
 # misc
 .DS_Store
